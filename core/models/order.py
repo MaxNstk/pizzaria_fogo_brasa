@@ -5,7 +5,7 @@ class Order(models.Model):
 
     total_value = models.FloatField()
     customer = models.ForeignKey('User', on_delete=models.DO_NOTHING)
-    pizzas = models.ManyToManyField('Pizza')
+    pizzas = models.ManyToManyField('Pizza', through='OrderPizza')
     feedback = models.ForeignKey('Feedback', on_delete=models.DO_NOTHING)
 
     def __str__(self) -> str:

@@ -21,4 +21,3 @@ class FeedBack(models.Model):
 
     rating = models.IntegerField(choices=rating_choices)
     description = models.CharField(max_length=255, null=True, blank=True)
-    order = models.ForeignKey('Order', on_delete=models.DO_NOTHING)

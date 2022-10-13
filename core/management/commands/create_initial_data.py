@@ -6,7 +6,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         
         try:
-            max = User.objects.create_user(username='max',password='max123',first_name='Max',last_name='Starke',
+            _max = User.objects.create_user(username='max',password='max123',first_name='Max',last_name='Starke',
             email='max@pizzariafogobrasa.com', phone_number='88888-888', cpf_cnpj='000.000.000-00')
 
             admin = User.objects.create_user(username='admin',password='admin123',is_superuser=True,
@@ -16,7 +16,7 @@ class Command(BaseCommand):
             email='max@pizzariafogobrasa.com', phone_number='99999-9999', cpf_cnpj='000.000.000-99')
         except Exception as e:
             admin = User.objects.get(username='admin')
-            max = User.objects.get(username='max')
+            _max = User.objects.get(username='max')
             joao = User.objects.get(username='joao')
 
         #size
@@ -90,8 +90,7 @@ class Command(BaseCommand):
         pizza_romeu_julieta_m = Pizza.objects.get_or_create(flavor=flavor_romeu_julieta, size=size_m, price=70)
         pizza_romeu_julieta_p = Pizza.objects.get_or_create(flavor=flavor_romeu_julieta, size=size_p, price=60)
 
-        #order
-        pedido1 = Order.objects.get_or_create(customer=max).add_pizza(pizza_calabresa_gg)
+        pedido1 = Order.objects.get_or_create(customer=_max).add_pizza(pizza_calabresa_gg)
         feedback1 = FeedBack.objects.get_or_create(rating=FeedBack.GREAT, description='Estava incrível!')
         pedido1.feedback = feedback1
 

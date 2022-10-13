@@ -5,3 +5,4 @@ from .user import User
 from .feedback import FeedBack
 from .order import Order
 from .order_pizza import OrderPizza
+from .product import Product

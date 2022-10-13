@@ -3,7 +3,7 @@ from core.models import *
 
 class Command(BaseCommand):
 
-    def handle(self, *args **options):
+    def handle(self, *args, **options):
         
         admin = User.objects.create_user(username='admin',password='admin123',is_superuser=True,
         first_name='admin',email='admin@pizzariafogobrasa.com', phone_number='99999-9999', cpf_cnpj='99.999.999/9999-99')
@@ -18,4 +18,6 @@ class Command(BaseCommand):
 
         pizza_calabresa_gg = Pizza.objects.get_or_create(flavor=flavor_calabresa, size=size_gg, price=80)
 
-        Order.objects.get_or_create()
+        pedido1 = Order.objects.get_or_create(customer=max).add_pizza(pizza_calabresa_gg)
+        feedback1 = FeedBack.objects.get_or_create(rating=FeedBack.GREAT, description='Estava incrível!')
+        pedido1.feedback = feedback1

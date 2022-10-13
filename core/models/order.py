@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Order(models.Model):
 
     total_value = models.FloatField(null=True, blank=True)
@@ -12,8 +11,6 @@ class Order(models.Model):
         return f'{self.id} - {self.customer} - {self.total_value}'
     
     def save(self, *args, **kwargs):
-        total_value = 0
-        for pizza in self.pizzas:
-            total_value += pizza.price
-        self.total_value = total_value
+        self.total_value = models.pizzas.all().aggregate(
+            total_price=models.Sum('price'))['total_price']
         return super().save(self, *args, **kwargs)

@@ -1,6 +1,7 @@
 from email.policy import default
 from enum import auto
 from secrets import choice
+from tabnanny import verbose
 from tkinter.tix import Tree
 from django.db import models
 
@@ -37,12 +38,12 @@ class Order(models.Model):
     products = models.ManyToManyField('Product')
     feedback = models.ForeignKey('Feedback', verbose_name='Feedback', on_delete=models.DO_NOTHING, null=True, blank=True)
     created_in = models.DateTimeField(auto_now=True)
-    situation_status = models.IntegerField(choices=situation_choices, default=PENDING_CONFIRMATION)
-    delivery_status = models.IntegerField(choices=delivery_choices, default=FACE_TO_FACE)
+    order_status = models.IntegerField(choices=situation_choices, verbose_name='Situação do Pedido', default=PENDING_CONFIRMATION)
+    order_type = models.IntegerField(choices=delivery_choices,verbose_name='Tipo de Entrega', default=FACE_TO_FACE)
     observation = models.TextField(null=True, blank=True)
     discount = models.FloatField(null=True, verbose_name='Desconto', blank=True)
     increase = models.FloatField(null=True, verbose_name='Acréscimo', blank=True)
-    address = models.ForeignKey('Address', on_delete=models.DO_NOTHING, null=True, blank=True)
+    address = models.ForeignKey('Address', on_delete=models.DO_NOTHING, verbose_name='Endereço', null=True, blank=True)
 
     def __str__(self) -> str:
         return f'{self.id} - {self.customer} - {self.total_value}'

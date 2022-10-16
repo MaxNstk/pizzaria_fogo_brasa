@@ -1,3 +1,4 @@
+from turtle import circle
 from django.core.management import BaseCommand
 from core.models import *
 
@@ -6,6 +7,12 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         
         try:
+            zeca = User.objects.create_user(username='zeca',password='zeca123',first_name='Zeca',last_name='Baleiro',
+            email='zeca@pizzariafogobrasa.com', phone_number='99999-9992', cpf_cnpj='000.000.000-39')
+
+            cris = User.objects.create_user(username='cris',password='cr7777',first_name='Cristiano',last_name='Ronaldo',
+            email='cr7@pizzariafogobrasa.com', phone_number='99999-3992', cpf_cnpj='000.000.004-39')
+
             _max = User.objects.create_user(username='max',password='max123',first_name='Max',last_name='Starke',
             email='max@pizzariafogobrasa.com', phone_number='88888-888', cpf_cnpj='000.000.000-00')
 
@@ -14,16 +21,26 @@ class Command(BaseCommand):
             
             joao = User.objects.create_user(username='joao',password='joao123',first_name='João',last_name='Krieger',
             email='max@pizzariafogobrasa.com', phone_number='99999-9999', cpf_cnpj='000.000.000-99')
+
+
+            
         except Exception as e:
             admin = User.objects.get(username='admin')
             _max = User.objects.get(username='max')
             joao = User.objects.get(username='joao')
+            zeca = User.objects.get(username='zeca')
+            cris = User.objects.get(username='cris')
+        
+        endereco1, created = Address.objects.get_or_create(customer=joao, address='Rua dos bobs', number='0', district='niterói', zip_code='89150000')
+        endereco2, created = Address.objects.get_or_create(customer=zeca, address='Av missler', number='323', district='dalbérgia', zip_code='89150000')
+        endereco3, created = Address.objects.get_or_create(customer=cris, address='Manchester', number='231', district='mojevi', zip_code='89150342')
 
         #size
         size_gg, created = Size.objects.get_or_create(short_name='GG', description='Gigante')
         size_g, created = Size.objects.get_or_create(short_name='G', description='Grande')
         size_m, created = Size.objects.get_or_create(short_name='M', description='Média')
         size_p, created = Size.objects.get_or_create(short_name='P', description='Pequena')
+
 
         #flavor
         flavor_calabresa, created =  Flavor.objects.get_or_create(name='Calabresa', description='Molho de tomate, queijo mussalera e muita calabresa!')
@@ -116,21 +133,31 @@ class Command(BaseCommand):
         pedido2.pizzas.add(pizza_napolitana_g)
         pedido2.pizzas.add(pizza_portuguesa_m)
 
+        pedido2.products.add(picole_chocolate)
         pedido2.products.add(guarana_600ml)
         pedido2.products.add(guarana_600ml)
-        
+
         feedback2, created = FeedBack.objects.get_or_create(rating=FeedBack.OK, description='Demorou mas chegou!')
         pedido2.feedback = feedback2
 
-        pedido3, created = Order.objects.get_or_create(customer=joao)
+        pedido3, created = Order.objects.get_or_create(customer=zeca)
         pedido3.pizzas.add(pizza_marguerita_g)
         pedido3.pizzas.add(pizza_romeu_julieta_m)
         pedido3.pizzas.add(pizza_morango_chocolate_p)
         pedido3.pizzas.add(pizza_mucarela_m)
+        pedido3.products.add(trident_hortela)
         
         feedback3, created = FeedBack.objects.get_or_create(rating=FeedBack.GOOD, description='Muito boaa!')
-        pedido3.feedback, created = feedback3
+        pedido3.feedback = feedback3
 
-        pedido4, created = Order.objects.get_or_create(customer=_max).add_pizza(pizza_quatro_queijos_gg)
+        pedido4, created = Order.objects.get_or_create(customer=cris)
+        pedido4.pizza.add(pizza_quatro_queijos_g)
+        pedido4.pizza.add(pizza_quatro_queijos_gg)
+        pedido4.pizza.add(pizza_quatro_queijos_m)
+        pedido4.pizza.add(pizza_quatro_queijos_p)
+
+        pedido4.products.add(cigarro_malboro)
+        pedido4.products.add(cigarro_malboro)
+
         feedback4, created = FeedBack.objects.get_or_create(rating=FeedBack.AWFUL, description='Muito óleo e pouco queijo!')
-        pedido4.feedback, created = feedback4
+        pedido4.feedback = feedback4

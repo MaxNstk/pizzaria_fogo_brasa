@@ -108,16 +108,17 @@ class Command(BaseCommand):
         pizza_romeu_julieta_p, created = Pizza.objects.get_or_create(flavor=flavor_romeu_julieta, size=size_p, price=60)
 
         coca_2l, created = Product.objects.get_or_create(description='Coca-Cola 2 Litros', price=12)
-        guarana_600ml = Product.objects.get_or_create(description='Guarana 600 ml', price=5)
-        cigarro_malboro  = Product.objects.get_or_create(description='Cicarro malboro', price=10)
-        hals_menta  = Product.objects.get_or_create(description='Hals de mentas', price=3)
-        picole_chocolate  = Product.objects.get_or_create(description='Picolé de Chocolate Lewa', price=6)
-        trident_hortela  = Product.objects.get_or_create(description='Trident de Hortelã', price=3.50)
-        tictac_canela  = Product.objects.get_or_create(description='TicTac de Canela', price=2.75)
+        guarana_600ml, created = Product.objects.get_or_create(description='Guarana 600 ml', price=5)
+        cigarro_malboro, created  = Product.objects.get_or_create(description='Cicarro malboro', price=10)
+        hals_menta, created  = Product.objects.get_or_create(description='Hals de mentas', price=3)
+        picole_chocolate, created  = Product.objects.get_or_create(description='Picolé de Chocolate Lewa', price=6)
+        trident_hortela, created  = Product.objects.get_or_create(description='Trident de Hortelã', price=3.50)
+        tictac_canela, created  = Product.objects.get_or_create(description='TicTac de Canela', price=2.75)
         
 
         pedido1, created = Order.objects.get_or_create(customer=_max, observation='Capricha ai chefe!',
-        situation=Order.FINISHED)
+        order_status=Order.FINISHED)
+
         pedido1.pizzas.add(pizza_calabresa_gg)
         pedido1.pizzas.add(pizza_morango_chocolate_m)
         pedido1.pizzas.add(pizza_frango_catupiry_gg)
@@ -156,10 +157,10 @@ class Command(BaseCommand):
         pedido3.feedback = feedback3
 
         pedido4, created = Order.objects.get_or_create(customer=cris, order_type=Order.DELIVERY)
-        pedido4.pizza.add(pizza_quatro_queijos_g)
-        pedido4.pizza.add(pizza_quatro_queijos_gg)
-        pedido4.pizza.add(pizza_quatro_queijos_m)
-        pedido4.pizza.add(pizza_quatro_queijos_p)
+        pedido4.pizzas.add(pizza_quatro_queijos_g)
+        pedido4.pizzas.add(pizza_quatro_queijos_gg)
+        pedido4.pizzas.add(pizza_quatro_queijos_m)
+        pedido4.pizzas.add(pizza_quatro_queijos_p)
 
         pedido4.products.add(cigarro_malboro)
         pedido4.products.add(cigarro_malboro)

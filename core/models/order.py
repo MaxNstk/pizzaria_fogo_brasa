@@ -48,11 +48,11 @@ class Order(models.Model):
     def __str__(self) -> str:
         return f'{self.id} - {self.customer} - {self.total_value}'
     
-    def save(self, *args, **kwargs):
-        if not self.id:
-            return super().save(self, *args, **kwargs)
-        self.total_value = self.pizzas.all().aggregate(
-            total_price=models.Sum('price'))['total_price']
-        self.total_value += self.products.all().aggregate(
-            total_price=models.Sum('price'))['total_price']
-        return super().save(self, *args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     if not self.id:
+    #         return super().save(self, *args, **kwargs)
+    #     self.total_value = self.pizzas.all().aggregate(
+    #         total_price=models.Sum('price'))['total_price']
+    #     self.total_value += self.products.all().aggregate(
+    #         total_price=models.Sum('price'))['total_price']
+    #     return super().save(self, *args, **kwargs)

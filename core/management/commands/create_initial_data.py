@@ -165,5 +165,15 @@ class Command(BaseCommand):
         pedido4.products.add(cigarro_malboro)
         pedido4.products.add(cigarro_malboro)
 
+        pedido4.address = endereco3
+
         # feedback4, created = FeedBack.objects.get_or_create(rating=FeedBack.AWFUL, description='Muito óleo e pouco queijo!')
         # pedido4.feedback = feedback4
+
+        pedido5, created = Order.objects.get_or_create(customer=joao, order_type=Order.FACE_TO_FACE)
+        pedido5.pizzas.add(pizza_napolitana_m)
+        pedido5.products.add(coca_2l)
+
+        pedido6, created = Order.objects.get_or_create(customer=max, order_type=Order.FACE_TO_FACE, order_status.IN_PRODUCTION)
+        pedido6.pizzas.add(pizza_bacon_g)
+        pedido6.products.add(tictac_canela)

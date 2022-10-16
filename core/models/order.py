@@ -1,3 +1,4 @@
+from email.policy import default
 from enum import auto
 from secrets import choice
 from django.db import models
@@ -26,13 +27,17 @@ class Order(models.Model):
     products = models.ManyToManyField('Product')
     feedback = models.ForeignKey('Feedback', verbose_name='Feedback', on_delete=models.DO_NOTHING, null=True, blank=True)
     created_in = models.DateTimeField(auto_now=True)
-    situation = models.IntegerField(choices=situation_choices)
+    situation = models.IntegerField(choices=situation_choices, default=PENDING_CONFIRMATION)
     observation = models.TextField(null=True, blank=True)
 
     def __str__(self) -> str:
         return f'{self.id} - {self.customer} - {self.total_value}'
     
     def save(self, *args, **kwargs):
-        self.total_value = models.pizzas.all().aggregate(
+        if not self.id:
+            return super().save(self, *args, **kwargs)
+        self.total_value = self.pizzas.all().aggregate(
+            total_price=models.Sum('price'))['total_price']
+        self.total_value += self.products.all().aggregate(
             total_price=models.Sum('price'))['total_price']
         return super().save(self, *args, **kwargs)

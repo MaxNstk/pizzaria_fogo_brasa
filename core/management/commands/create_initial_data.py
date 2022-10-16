@@ -92,22 +92,42 @@ class Command(BaseCommand):
 
         coca_2l, created = Product.objects.get_or_create(description='Coca-Cola 2 Litros', price=12)
         guarana_600ml = Product.objects.get_or_create(description='Guarana 600 ml', price=5)
+        cigarro_malboro  = Product.objects.get_or_create(description='Cicarro malboro', price=10)
+        hals_menta  = Product.objects.get_or_create(description='Hals de mentas', price=3)
+        picole_chocolate  = Product.objects.get_or_create(description='Picolé de Chocolate Lewa', price=6)
+        trident_hortela  = Product.objects.get_or_create(description='Trident de Hortelã', price=3.50)
+        tictac_canela  = Product.objects.get_or_create(description='TicTac de Canela', price=2.75)
+        
 
         pedido1, created = Order.objects.get_or_create(customer=_max, observation='Capricha ai chefe!',
         situation=Order.FINISHED)
         pedido1.pizzas.add(pizza_calabresa_gg)
+        pedido1.pizzas.add(pizza_morango_chocolate_m)
+        pedido1.pizzas.add(pizza_frango_catupiry_gg)
         pedido1.products.add(coca_2l)
+        pedido1.products.add(tictac_canela)
 
         feedback1, created = FeedBack.objects.get_or_create(rating=FeedBack.GREAT, description='Estava incrível!')
         pedido1.feedback = feedback1
 
         pedido2, created = Order.objects.get_or_create(customer=joao)
         pedido2.pizzas.add(pizza_portuguesa_m)
+        pedido2.pizzas.add(pizza_bacon_p)
+        pedido2.pizzas.add(pizza_napolitana_g)
+        pedido2.pizzas.add(pizza_portuguesa_m)
+
         pedido2.products.add(guarana_600ml)
+        pedido2.products.add(guarana_600ml)
+        
         feedback2, created = FeedBack.objects.get_or_create(rating=FeedBack.OK, description='Demorou mas chegou!')
         pedido2.feedback = feedback2
 
-        pedido3, created = Order.objects.get_or_create(customer=joao).add_pizza(pizza_marguerita_g)
+        pedido3, created = Order.objects.get_or_create(customer=joao)
+        pedido3.pizzas.add(pizza_marguerita_g)
+        pedido3.pizzas.add(pizza_romeu_julieta_m)
+        pedido3.pizzas.add(pizza_morango_chocolate_p)
+        pedido3.pizzas.add(pizza_mucarela_m)
+        
         feedback3, created = FeedBack.objects.get_or_create(rating=FeedBack.GOOD, description='Muito boaa!')
         pedido3.feedback, created = feedback3
 

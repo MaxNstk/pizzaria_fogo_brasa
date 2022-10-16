@@ -1,6 +1,7 @@
 from email.policy import default
 from enum import auto
 from secrets import choice
+from tkinter.tix import Tree
 from django.db import models
 
 class Order(models.Model):
@@ -12,6 +13,9 @@ class Order(models.Model):
     READY = 4
     FINISHED = 5 
 
+    DELIVERY = 1
+    FACE_TO_FACE = 2
+
     situation_choices = (
         ('Cancelado',CANCELED),
         ('Pendente de confirmação',PENDING_CONFIRMATION),
@@ -21,14 +25,24 @@ class Order(models.Model):
         ('Finalizado',FINISHED)
     )
 
-    total_value = models.FloatField(null=True, verbose_name='Valor Total', blank=True)
+    delivery_choices = (
+        ('Entrega', DELIVERY),
+        ('Presencial', FACE_TO_FACE)
+    )
+
+    final_value = models.FloatField(null=True, verbose_name='Valor Final', blank=True)
+    original_value = models.FloatField(null=True, verbose_name='Valor do Pedido', blank=True)
     customer = models.ForeignKey('User', verbose_name='Cliente', on_delete=models.DO_NOTHING)
     pizzas = models.ManyToManyField('Pizza', verbose_name='Pizza(s)', through='OrderPizza')
     products = models.ManyToManyField('Product')
     feedback = models.ForeignKey('Feedback', verbose_name='Feedback', on_delete=models.DO_NOTHING, null=True, blank=True)
     created_in = models.DateTimeField(auto_now=True)
-    situation = models.IntegerField(choices=situation_choices, default=PENDING_CONFIRMATION)
+    situation_status = models.IntegerField(choices=situation_choices, default=PENDING_CONFIRMATION)
+    delivery_status = models.IntegerField(choices=delivery_choices, default=FACE_TO_FACE)
     observation = models.TextField(null=True, blank=True)
+    discount = models.FloatField(null=True, verbose_name='Desconto', blank=True)
+    increase = models.FloatField(null=True, verbose_name='Acréscimo', blank=True)
+    address = models.ForeignKey('Address', on_delete=models.DO_NOTHING, null=True, blank=True)
 
     def __str__(self) -> str:
         return f'{self.id} - {self.customer} - {self.total_value}'

@@ -127,7 +127,7 @@ class Command(BaseCommand):
         feedback1, created = FeedBack.objects.get_or_create(rating=FeedBack.GREAT, description='Estava incrível!')
         pedido1.feedback = feedback1
 
-        pedido2, created = Order.objects.get_or_create(customer=joao)
+        pedido2, created = Order.objects.get_or_create(customer=joao, order_type=Order.DELIVERY)
         pedido2.pizzas.add(pizza_portuguesa_m)
         pedido2.pizzas.add(pizza_bacon_p)
         pedido2.pizzas.add(pizza_napolitana_g)
@@ -137,20 +137,25 @@ class Command(BaseCommand):
         pedido2.products.add(guarana_600ml)
         pedido2.products.add(guarana_600ml)
 
+        pedido2.address = endereco1
+
         feedback2, created = FeedBack.objects.get_or_create(rating=FeedBack.OK, description='Demorou mas chegou!')
         pedido2.feedback = feedback2
 
-        pedido3, created = Order.objects.get_or_create(customer=zeca)
+        pedido3, created = Order.objects.get_or_create(customer=zeca, order_type=Order.DELIVERY)
         pedido3.pizzas.add(pizza_marguerita_g)
         pedido3.pizzas.add(pizza_romeu_julieta_m)
         pedido3.pizzas.add(pizza_morango_chocolate_p)
         pedido3.pizzas.add(pizza_mucarela_m)
+
         pedido3.products.add(trident_hortela)
         
+        pedido3.address = endereco2
+
         feedback3, created = FeedBack.objects.get_or_create(rating=FeedBack.GOOD, description='Muito boaa!')
         pedido3.feedback = feedback3
 
-        pedido4, created = Order.objects.get_or_create(customer=cris)
+        pedido4, created = Order.objects.get_or_create(customer=cris, order_type=Order.DELIVERY)
         pedido4.pizza.add(pizza_quatro_queijos_g)
         pedido4.pizza.add(pizza_quatro_queijos_gg)
         pedido4.pizza.add(pizza_quatro_queijos_m)
@@ -159,5 +164,5 @@ class Command(BaseCommand):
         pedido4.products.add(cigarro_malboro)
         pedido4.products.add(cigarro_malboro)
 
-        feedback4, created = FeedBack.objects.get_or_create(rating=FeedBack.AWFUL, description='Muito óleo e pouco queijo!')
-        pedido4.feedback = feedback4
+        # feedback4, created = FeedBack.objects.get_or_create(rating=FeedBack.AWFUL, description='Muito óleo e pouco queijo!')
+        # pedido4.feedback = feedback4

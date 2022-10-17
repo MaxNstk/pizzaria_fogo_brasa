@@ -127,6 +127,7 @@ class Command(BaseCommand):
 
         feedback1, created = FeedBack.objects.get_or_create(rating=FeedBack.GREAT, description='Estava incrível!')
         pedido1.feedback = feedback1
+        pedido1.save()
 
         pedido2, created = Order.objects.get_or_create(customer=joao, order_type=Order.DELIVERY, increase=10.50)
         pedido2.pizzas.add(pizza_portuguesa_m)
@@ -137,8 +138,8 @@ class Command(BaseCommand):
         pedido2.products.add(picole_chocolate)
         pedido2.products.add(guarana_600ml)
         pedido2.products.add(guarana_600ml)
-
         pedido2.address = endereco1
+        pedido2.save()
 
         feedback2, created = FeedBack.objects.get_or_create(rating=FeedBack.OK, description='Demorou mas chegou!')
         pedido2.feedback = feedback2
@@ -155,6 +156,7 @@ class Command(BaseCommand):
 
         feedback3, created = FeedBack.objects.get_or_create(rating=FeedBack.GOOD, description='Muito boaa!')
         pedido3.feedback = feedback3
+        pedido3.save()
 
         pedido4, created = Order.objects.get_or_create(customer=cris, order_type=Order.DELIVERY, increase=7.50)
         pedido4.pizzas.add(pizza_quatro_queijos_g)
@@ -166,6 +168,7 @@ class Command(BaseCommand):
         pedido4.products.add(cigarro_malboro)
 
         pedido4.address = endereco3
+        pedido4.save()
 
         # feedback4, created = FeedBack.objects.get_or_create(rating=FeedBack.AWFUL, description='Muito óleo e pouco queijo!')
         # pedido4.feedback = feedback4
@@ -174,6 +177,6 @@ class Command(BaseCommand):
         pedido5.pizzas.add(pizza_napolitana_m)
         pedido5.products.add(coca_2l)
 
-        pedido6, created = Order.objects.get_or_create(customer=max, order_type=Order.FACE_TO_FACE, order_status.IN_PRODUCTION)
+        pedido6, created = Order.objects.get_or_create(customer=_max, order_status=Order.IN_PRODUCTION)
         pedido6.pizzas.add(pizza_bacon_g)
         pedido6.products.add(tictac_canela)

@@ -35,7 +35,7 @@ class Order(models.Model):
     original_value = models.FloatField(null=True, verbose_name='Valor do Pedido', blank=True)
     customer = models.ForeignKey('User', verbose_name='Cliente', on_delete=models.DO_NOTHING)
     pizzas = models.ManyToManyField('Pizza', verbose_name='Pizza(s)', through='OrderPizza')
-    products = models.ManyToManyField('Product')
+    products = models.ManyToManyField('Product', verbose_name='Produto(s)', through='OrderProduct')
     feedback = models.ForeignKey('Feedback', verbose_name='Feedback', on_delete=models.DO_NOTHING, null=True, blank=True)
     created_in = models.DateTimeField(auto_now=True)
     order_status = models.IntegerField(choices=situation_choices, verbose_name='Situação do Pedido', default=PENDING_CONFIRMATION)
@@ -48,11 +48,16 @@ class Order(models.Model):
     def __str__(self) -> str:
         return f'{self.id} - {self.customer} - {self.total_value}'
     
-    # def save(self, *args, **kwargs):
-    #     if not self.id:
-    #         return super().save(self, *args, **kwargs)
-    #     self.total_value = self.pizzas.all().aggregate(
-    #         total_price=models.Sum('price'))['total_price']
-    #     self.total_value += self.products.all().aggregate(
-    #         total_price=models.Sum('price'))['total_price']
-    #     return super().save(self, *args, **kwargs)
+    def save(self, *args, **kwargs) -> None:
+        if not self.id:
+            return super().save(*args, **kwargs)
+        pizzas_value = self.pizzas.all().aggregate(
+            total_price=models.Sum('price'))['total_price']
+        products_value = self.products.all().aggregate(
+            total_price=models.Sum('price'))['total_price'] 
+        self.original_value = pizzas_value + products_value
+        ## todo melhorar isso aqui
+        if self.increase:
+            self.final_value = self.original_value + self.increase
+        if self.discount:
+            self.original_value = self.original_value - self.increase

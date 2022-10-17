@@ -139,10 +139,11 @@ class Command(BaseCommand):
         pedido2.products.add(guarana_600ml)
         pedido2.products.add(guarana_600ml)
         pedido2.address = endereco1
-        pedido2.save()
+
 
         feedback2, created = FeedBack.objects.get_or_create(rating=FeedBack.OK, description='Demorou mas chegou!')
         pedido2.feedback = feedback2
+        pedido2.save()
 
         pedido3, created = Order.objects.get_or_create(customer=zeca, order_type=Order.DELIVERY, increase=5.0)
         pedido3.pizzas.add(pizza_marguerita_g)
@@ -176,7 +177,9 @@ class Command(BaseCommand):
         pedido5, created = Order.objects.get_or_create(customer=joao, order_type=Order.FACE_TO_FACE, discount=5.0)
         pedido5.pizzas.add(pizza_napolitana_m)
         pedido5.products.add(coca_2l)
+        pedido5.save()
 
         pedido6, created = Order.objects.get_or_create(customer=_max, order_status=Order.IN_PRODUCTION)
         pedido6.pizzas.add(pizza_bacon_g)
         pedido6.products.add(tictac_canela)
+        pedido6.save()

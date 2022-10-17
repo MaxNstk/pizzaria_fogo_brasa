@@ -59,6 +59,8 @@ class Order(models.Model):
         ## todo melhorar isso aqui
         if self.increase:
             self.final_value = self.original_value + self.increase
-        if self.discount:
-            self.original_value = self.original_value - self.discount
+        elif self.discount:
+            self.final_value = self.original_value - self.discount
+        else:
+            self.final_value = self.original_value
         return super().save(*args, **kwargs)

@@ -1,13 +1,13 @@
+{% load widget_tweaks crispy_forms_tags i18n static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <title>Pizzaria - Fogo na Brasa</title>
-    <link rel="stylesheet" href="css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kadwa:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/fontawesome/css/all.min.css"
+    <link rel="stylesheet" href="{% static 'css/fontawesome/css/all.min.css' %}">
 </head>
 <body>
         <div class="login">
@@ -19,9 +19,36 @@
                 </div>
             </div>
             <div class="login-form">
-                <img src="img/logo.png" alt="Logo Pizzaria Fogo na Brasa" width="350px"><br>
-                <input id="dsEmail" type="email" placeholder="E-mail"><br>
-                <input id="cdPassword" type="password" placeholder="Senha"><br>
+                <img src="{% static 'img/logo.png' %}" alt="Logo Pizzaria Fogo na Brasa" width="350px"><br>
+
+                <div id="content-main">
+                    <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
+                        <div class="form-group">
+                            {{ form.username.errors }}
+                            {{ form.username|attr:"class: form-control"|attr:"placeholder: Usuário" }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.password.errors }}
+                            {{ form.password|attr:"class: form-control"|attr:"placeholder: Senha" }}
+                            <input type="hidden" name="next" value="{{ next }}">
+                        </div>
+                        {% url 'admin_password_reset' as password_reset_url %}
+                        {% if password_reset_url %}
+                            <div class="password-reset-link">
+                                <a href="{{ password_reset_url }}">{% translate 'Forgotten your password or username?' %}</a>
+                            </div>
+                        {% endif %}
+                        <div class="submit-row">
+                            <button class="btn btn-primary" type="submit">Entrar</button>
+                        </div>
+                    </form>
+                    <p class="m-t">
+                        <small><strong>Copyright</strong> Pizzaria Fogo Brasa &copy; {% now 'Y' %}</small>
+                    </p>
+                </div>
+
+                <!-- <input id="dsEmail" type="email" placeholder="E-mail"><br>
+                <input id="cdPassword" type="password" placeholder="Senha"><br> -->
                 <button type="submit" id="btnLogin"><i class="fa-solid fa-right-to-bracket"></i>&nbsp;LOGIN</button><br>
             </div>
         </div>

@@ -12,17 +12,16 @@
     <link rel="shortcut icon" href="{% static 'img/favicon.png' %}">
 </head>
 <body>
-        <div class="login">
-            <div class="login-banner">
-                <div class="banner-content">
-                    {% block banner_content %} {% endblock %}
+        <div class="auth-banner">
+            <div class="banner-image">
+                <div class="banner-left-content">
+                    {% block banner_left_content %} {% endblock %}
                 </div>
             </div>
-            <div class="login-form">
+            <div class="banner-right-content">
                 <img src="{% static 'img/logo.png' %}" alt="Logo Pizzaria Fogo na Brasa" width="350px"><br>
-
                 <div id="content-main">
-                    {% block auth_content %} {% endblock %}
+                    {% block banner_right_content %} {% endblock %}
                 </div>
             </div>
         </div>
@@ -41,14 +40,14 @@
         font-family: 'Kadwa';
     }
 
-    .login{
+    .auth-banner{
         display: flex;
         align-items: center;
         justify-content: center;
         margin: 20vh 0;
     }
 
-    .login-form{
+    .banner-right-content{
         background-color: #620000;
         text-align: center;
         width: 500px;
@@ -56,7 +55,7 @@
         box-shadow: 0px 0px 10px #000000;
     }
 
-    .login-form input{
+    .banner-right-content input{
         height: 2.5em;
         width: 22em;
         margin: 0.625em;
@@ -64,7 +63,7 @@
         border-radius: 0.25em;
     }
 
-    .login-form button{
+    .banner-right-content button{
         width: 10em;
         height: 2.5em;
         background-color: #410000;
@@ -77,11 +76,11 @@
         font-weight: 700;
     }
 
-    .login-form img{
+    .banner-right-content img{
         margin: 2em 0em;
     }
 
-    .login-banner{
+    .banner-image{
         width: 500px;
         height: 500px;
         background-image: url("{% static 'img/pizza_banner.jpg' %}");
@@ -90,16 +89,16 @@
         
     }
 
-    .banner-content{
+    .banner-left-content{
         padding-top: 180px;
     }
 
-    .login-banner h1, p{
+    .banner-left-content h1, p{
         color: #FFFFFF;
         margin: 0.350em;
     }
 
-    .login-banner button{
+    .banner-left-content button{
         cursor: pointer;
         width: 12em;
         height: 2.5em;

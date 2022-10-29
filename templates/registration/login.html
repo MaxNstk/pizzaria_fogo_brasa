@@ -1,7 +1,7 @@
 {% extends 'base_login.html' %}
 {% load widget_tweaks crispy_forms_tags i18n static %}
 
-{% block banner_content %}
+{% block banner_left_content %}
 
 <h1>Seja Bem-Vindo!</h1>
 <p>Informe seus dados para acesso ao sistema</p>   
@@ -9,7 +9,7 @@
 
 {% endblock %}
 
-{% block auth_content %}
+{% block banner_right_content %}
 
 <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
     <div class="form-group">
@@ -21,7 +21,6 @@
         {{ form.password|attr:"class: form-control"|attr:"placeholder: Senha" }}
         <input type="hidden" name="next" value="{{ next }}">
     </div>
-    {% url 'admin_password_reset' as password_reset_url %}
     {% if password_reset_url %}
         <div class="password-reset-link">
             <a href="{{ password_reset_url }}">{% translate 'Forgotten your password or username?' %}</a>

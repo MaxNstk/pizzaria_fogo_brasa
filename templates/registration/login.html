@@ -1,134 +1,35 @@
+{% extends 'base_login.html' %}
 {% load widget_tweaks crispy_forms_tags i18n static %}
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Pizzaria - Fogo na Brasa</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kadwa:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/fontawesome/css/all.min.css' %}">
-</head>
-<body>
-        <div class="login">
-            <div class="login-banner">
-                <div class="banner-content">
-                    <h1>Seja Bem-Vindo!</h1>
-                    <p>Informe seus dados para acesso ao sistema</p>   
-                    <button type="submit" id="btnRegister"><i class="fa-solid fa-square-plus"></i>&nbsp;CADASTRE-SE</button><br>
-                </div>
-            </div>
-            <div class="login-form">
-                <img src="{% static 'img/logo.png' %}" alt="Logo Pizzaria Fogo na Brasa" width="350px"><br>
 
-                <div id="content-main">
-                    <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
-                        <div class="form-group">
-                            {{ form.username.errors }}
-                            {{ form.username|attr:"class: form-control"|attr:"placeholder: Usuário" }}
-                        </div>
-                        <div class="form-group">
-                            {{ form.password.errors }}
-                            {{ form.password|attr:"class: form-control"|attr:"placeholder: Senha" }}
-                            <input type="hidden" name="next" value="{{ next }}">
-                        </div>
-                        {% url 'admin_password_reset' as password_reset_url %}
-                        {% if password_reset_url %}
-                            <div class="password-reset-link">
-                                <a href="{{ password_reset_url }}">{% translate 'Forgotten your password or username?' %}</a>
-                            </div>
-                        {% endif %}
-                        <div class="submit-row">
-                            <button class="btn btn-primary" type="submit">Entrar</button>
-                        </div>
-                    </form>
-                    <p class="m-t">
-                        <small><strong>Copyright</strong> Pizzaria Fogo Brasa &copy; {% now 'Y' %}</small>
-                    </p>
-                </div>
+{% block banner_content %}
 
-                <!-- <input id="dsEmail" type="email" placeholder="E-mail"><br>
-                <input id="cdPassword" type="password" placeholder="Senha"><br> -->
-                <button type="submit" id="btnLogin"><i class="fa-solid fa-right-to-bracket"></i>&nbsp;LOGIN</button><br>
-            </div>
+<h1>Seja Bem-Vindo!</h1>
+<p>Informe seus dados para acesso ao sistema</p>   
+<button type="submit" id="btnRegister"><i class="fa-solid fa-square-plus"></i>&nbsp;CADASTRE-SE</button><br>
+
+{% endblock %}
+
+{% block auth_content %}
+
+<form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
+    <div class="form-group">
+        {{ form.username.errors }}
+        {{ form.username|attr:"class: form-control"|attr:"placeholder: Usuário" }}
+    </div>
+    <div class="form-group">
+        {{ form.password.errors }}
+        {{ form.password|attr:"class: form-control"|attr:"placeholder: Senha" }}
+        <input type="hidden" name="next" value="{{ next }}">
+    </div>
+    {% url 'admin_password_reset' as password_reset_url %}
+    {% if password_reset_url %}
+        <div class="password-reset-link">
+            <a href="{{ password_reset_url }}">{% translate 'Forgotten your password or username?' %}</a>
         </div>
-</body>
-</html>
+    {% endif %}
+    <div class="submit-row">
+        <button class="btn btn-primary" type="submit">Entrar</button>
+    </div>
+</form>
 
-<style>
-    body{
-        background-color: #410000;
-        font-family: 'Kadwa';
-    }
-
-    .login{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 20vh 0;
-    }
-
-    .login-form{
-        background-color: #620000;
-        text-align: center;
-        width: 500px;
-        height: 500px;
-        box-shadow: 0px 0px 10px #000000;
-    }
-
-    .login-form input{
-        height: 2.5em;
-        width: 22em;
-        margin: 0.625em;
-        border: 0.025em solid gray;
-        border-radius: 0.25em;
-    }
-
-    .login-form button{
-        width: 10em;
-        height: 2.5em;
-        background-color: #410000;
-        color: #FFFFFF;
-        border: none;
-        margin: 1em;
-        cursor: pointer;
-        border-radius: 2px;
-        box-shadow: 2px 2px 5px #000000;
-        font-weight: 700;
-    }
-
-    .login-form img{
-        margin: 2em 0em;
-    }
-
-    .login-banner{
-        width: 500px;
-        height: 500px;
-        background-image: url("img/pizza_banner.jpg");
-        box-shadow: 0px 0px 10px #000000;
-        text-align: center;
-        
-    }
-
-    .banner-content{
-        padding-top: 180px;
-    }
-
-    .login-banner h1, p{
-        color: #FFFFFF;
-        margin: 0.350em;
-    }
-
-    .login-banner button{
-        cursor: pointer;
-        width: 12em;
-        height: 2.5em;
-        margin: 0.625em;
-        background-color: #FFFFFF;
-        color: #410000;
-        border: none;
-        border-radius: 2px;
-        box-shadow: 2px 2px 5px #000000;
-        font-weight: 700;    
-    }
-</style>
+{% endblock %}

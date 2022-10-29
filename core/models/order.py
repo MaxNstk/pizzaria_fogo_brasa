@@ -5,6 +5,8 @@ from tabnanny import verbose
 from tkinter.tix import Tree
 from django.db import models
 
+from core.models.order_pizza import OrderPizza
+
 class Order(models.Model):
 
     CANCELED = 0
@@ -41,8 +43,8 @@ class Order(models.Model):
     order_status = models.IntegerField(choices=situation_choices, verbose_name='Situação do Pedido', default=PENDING_CONFIRMATION)
     order_type = models.IntegerField(choices=delivery_choices,verbose_name='Tipo de Entrega', default=FACE_TO_FACE)
     observation = models.TextField(null=True, blank=True)
-    discount = models.FloatField(null=True, verbose_name='Desconto', blank=True)
-    increase = models.FloatField(null=True, verbose_name='Acréscimo', blank=True)
+    discount = models.FloatField(verbose_name='Desconto', default=0)
+    increase = models.FloatField(verbose_name='Acréscimo', default=0)
     address = models.ForeignKey('Address', on_delete=models.DO_NOTHING, verbose_name='Endereço', null=True, blank=True)
 
     def __str__(self) -> str:
@@ -56,11 +58,5 @@ class Order(models.Model):
         products_value = self.products.all().aggregate(
             total_price=models.Sum('price'))['total_price'] 
         self.original_value = pizzas_value + products_value
-        ## todo melhorar isso aqui
-        if self.increase:
-            self.final_value = self.original_value + self.increase
-        elif self.discount:
-            self.final_value = self.original_value - self.discount
-        else:
-            self.final_value = self.original_value
+        self.total_value = self.original_value + self.increase - self.discount
         return super().save(*args, **kwargs)

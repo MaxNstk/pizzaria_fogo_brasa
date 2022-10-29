@@ -118,41 +118,40 @@ class Command(BaseCommand):
 
         pedido1, created = Order.objects.get_or_create(customer=_max, observation='Capricha ai chefe!',
         order_status=Order.FINISHED, discount=5)
-
-        pedido1.pizzas.add(pizza_calabresa_gg)
-        pedido1.pizzas.add(pizza_morango_chocolate_m)
-        pedido1.pizzas.add(pizza_frango_catupiry_gg)
-        pedido1.products.add(coca_2l)
-        pedido1.products.add(tictac_canela)
+        OrderPizza.objects.create(order=pedido1, pizza=pizza_calabresa_gg)
+        OrderPizza.objects.create(order=pedido1, pizza=pizza_morango_chocolate_m)
+        OrderPizza.objects.create(order=pedido1, pizza=pizza_frango_catupiry_gg)
+        OrderProduct.objects.create(order=pedido1, product=coca_2l)
+        OrderProduct.objects.create(order=pedido1, product=tictac_canela)
 
         feedback1, created = FeedBack.objects.get_or_create(rating=FeedBack.GREAT, description='Estava incrível!')
         pedido1.feedback = feedback1
         pedido1.save()
 
         pedido2, created = Order.objects.get_or_create(customer=joao, order_type=Order.DELIVERY, increase=10.50)
-        pedido2.pizzas.add(pizza_portuguesa_m)
-        pedido2.pizzas.add(pizza_bacon_p)
-        pedido2.pizzas.add(pizza_napolitana_g)
-        pedido2.pizzas.add(pizza_portuguesa_m)
 
-        pedido2.products.add(picole_chocolate)
-        pedido2.products.add(guarana_600ml)
-        pedido2.products.add(guarana_600ml)
+        OrderPizza.objects.create(order=pedido2, pizza=pizza_portuguesa_m)
+        OrderPizza.objects.create(order=pedido2, pizza=pizza_bacon_p)
+        OrderPizza.objects.create(order=pedido2, pizza=pizza_napolitana_g)
+        OrderPizza.objects.create(order=pedido2, pizza=pizza_portuguesa_m)
+
+        OrderProduct.objects.create(order=pedido2, product=picole_chocolate)
+        OrderProduct.objects.create(order=pedido2, product=guarana_600ml)
+        OrderProduct.objects.create(order=pedido2, product=guarana_600ml)
+
         pedido2.address = endereco1
-
-
         feedback2, created = FeedBack.objects.get_or_create(rating=FeedBack.OK, description='Demorou mas chegou!')
         pedido2.feedback = feedback2
         pedido2.save()
 
         pedido3, created = Order.objects.get_or_create(customer=zeca, order_type=Order.DELIVERY, increase=5.0)
-        pedido3.pizzas.add(pizza_marguerita_g)
-        pedido3.pizzas.add(pizza_romeu_julieta_m)
-        pedido3.pizzas.add(pizza_morango_chocolate_p)
-        pedido3.pizzas.add(pizza_mucarela_m)
 
-        pedido3.products.add(trident_hortela)
-        
+        OrderPizza.objects.create(order=pedido3, pizza=pizza_marguerita_g)
+        OrderPizza.objects.create(order=pedido3, pizza=pizza_romeu_julieta_m)
+        OrderPizza.objects.create(order=pedido3, pizza=pizza_morango_chocolate_p)
+        OrderPizza.objects.create(order=pedido3, pizza=pizza_mucarela_m)
+
+        OrderProduct.objects.create(order=pedido3, product=trident_hortela)        
         pedido3.address = endereco2
 
         feedback3, created = FeedBack.objects.get_or_create(rating=FeedBack.GOOD, description='Muito boaa!')
@@ -160,26 +159,21 @@ class Command(BaseCommand):
         pedido3.save()
 
         pedido4, created = Order.objects.get_or_create(customer=cris, order_type=Order.DELIVERY, increase=7.50)
-        pedido4.pizzas.add(pizza_quatro_queijos_g)
-        pedido4.pizzas.add(pizza_quatro_queijos_gg)
-        pedido4.pizzas.add(pizza_quatro_queijos_m)
-        pedido4.pizzas.add(pizza_quatro_queijos_p)
 
-        pedido4.products.add(cigarro_malboro)
-        pedido4.products.add(cigarro_malboro)
+        OrderPizza.objects.create(order=pedido4, pizza=pizza_quatro_queijos_g)
+        OrderPizza.objects.create(order=pedido4, pizza=pizza_quatro_queijos_gg)
+        OrderPizza.objects.create(order=pedido4, pizza=pizza_quatro_queijos_m)
+        OrderPizza.objects.create(order=pedido4, pizza=pizza_quatro_queijos_p)
 
+        OrderProduct.objects.create(order=pedido4, product=cigarro_malboro)        
+        OrderProduct.objects.create(order=pedido4, product=cigarro_malboro)        
         pedido4.address = endereco3
         pedido4.save()
 
-        # feedback4, created = FeedBack.objects.get_or_create(rating=FeedBack.AWFUL, description='Muito óleo e pouco queijo!')
-        # pedido4.feedback = feedback4
-
         pedido5, created = Order.objects.get_or_create(customer=joao, order_type=Order.FACE_TO_FACE, discount=5.0)
-        pedido5.pizzas.add(pizza_napolitana_m)
-        pedido5.products.add(coca_2l)
-        pedido5.save()
+        OrderPizza.objects.create(order=pedido5, pizza=pizza_napolitana_m)
+        OrderProduct.objects.create(order=pedido5, product=coca_2l)        
 
         pedido6, created = Order.objects.get_or_create(customer=_max, order_status=Order.IN_PRODUCTION)
-        pedido6.pizzas.add(pizza_bacon_g)
-        pedido6.products.add(tictac_canela)
-        pedido6.save()
+        OrderPizza.objects.create(order=pedido6, pizza=pizza_bacon_g)
+        OrderProduct.objects.create(order=pedido6, product=tictac_canela) 

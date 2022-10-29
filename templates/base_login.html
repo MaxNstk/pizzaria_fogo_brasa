@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kadwa:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/fontawesome/css/all.min.css' %}">
+    <link rel="shortcut icon" href="{% static 'img/favicon.png' %}">
 </head>
 <body>
         <div class="login">
@@ -22,16 +23,15 @@
 
                 <div id="content-main">
                     {% block auth_content %} {% endblock %}
-                    <p class="m-t">
-                        <small><strong>Copyright</strong> Pizzaria Fogo Brasa &copy; {% now 'Y' %}</small>
-                    </p>
                 </div>
-
-                <!-- <input id="dsEmail" type="email" placeholder="E-mail"><br>
-                <input id="cdPassword" type="password" placeholder="Senha"><br> -->
-                <button type="submit" id="btnLogin"><i class="fa-solid fa-right-to-bracket"></i>&nbsp;LOGIN</button><br>
             </div>
         </div>
+
+        <footer>
+            <p class="m-t">
+                <small><strong>Copyright</strong> Pizzaria Fogo Brasa &copy; {% now 'Y' %}</small>
+            </p>
+        </footer>
 </body>
 </html>
 
@@ -84,7 +84,7 @@
     .login-banner{
         width: 500px;
         height: 500px;
-        background-image: url("img/pizza_banner.jpg");
+        background-image: url("{% static 'img/pizza_banner.jpg' %}");
         box-shadow: 0px 0px 10px #000000;
         text-align: center;
         
@@ -110,5 +110,13 @@
         border-radius: 2px;
         box-shadow: 2px 2px 5px #000000;
         font-weight: 700;    
+    }
+
+    .password-reset-link{
+        font-size: 14px;
+    }
+
+    footer{
+        text-align: center;
     }
 </style>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzaria - Fogo na Brasa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kadwa:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/fontawesome/css/all.min.css' %}">
+    <link rel="shortcut icon" href="{% static 'img/favicon.png' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+    <header id="navbar">
+        <div class="d-flex justify-content-between">
+            <img src="../static/img/logo_home.png" width="200px" draggable="false">
+        </div>
+        <div class="d-flex flex-row bd-highlight mb-3 border border-bottom-0 border-left-0">
+            <a class="p-2 bd-highlight font-weight-bold border-right">PÁGINA INICIAL</a>
+            <a class="p-2 bd-highlight font-weight-bold border-right">DELIVERY</a>
+            <a class="p-2 bd-highlight font-weight-bold border-right">PEDIDOS</a>
+          </div>
+    </header>
+
+    <main id="home-content" class="d-flex justify-content-center mt-5">
+        <div class="d-flex flex-row justify-content-center bg-light w-50 p3 rounded">
+            <p class="bd-highlight m-2 px-5">COMEÇAR O PEDIDO</p>
+            <button class="bd-highlight m-2 px-5"><i class="fa-sharp fa-solid fa-moped"></i>&nbsp;ENTREGA</button>
+            <p class="bd-highlight m-2 px-5">OU</p>
+            <button class="bd-highlight m-2 px-5"><i class="fa-solid fa-store"></i>&nbsp;RETIRADA</button>
+        </div>    
+    </main>
+</body>
+</html>
+<style>
+    body{
+        background-image: url("../static/img/background_texture.png");
+    }
+
+    #navbar{
+        background-color: #410000;
+        color: #FFFFFF;
+    }
+
+    #navbar a{
+        cursor: pointer;
+    }
+
+</style>

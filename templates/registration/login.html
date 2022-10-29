@@ -5,7 +5,8 @@
 
 <h1>Seja Bem-Vindo!</h1>
 <p>Informe seus dados para acesso ao sistema</p>   
-<button type="submit" id="btnRegister"><i class="fa-solid fa-square-plus"></i>&nbsp;CADASTRE-SE</button><br>
+<a href="{% url 'register_view' %}">
+<button type="submit" id="btnRegister"><i class="fa-solid fa-square-plus"></i>&nbsp;CADASTRE-SE</button></a><br>
 
 {% endblock %}
 
@@ -23,7 +24,7 @@
     </div>
     {% if password_reset_url %}
         <div class="password-reset-link">
-            <a href="{{ password_reset_url }}">{% translate 'Forgotten your password or username?' %}</a>
+            <a href="{% url 'password_reset_url' %}">{% translate 'Forgotten your password or username?' %}</a>
         </div>
     {% endif %}
     <div class="submit-row">

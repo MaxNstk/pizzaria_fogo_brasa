@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.contrib.auth.views import *
 from core.views.home_view import HomeView
+from core.views.admin_view import AdminView
 from django.contrib.auth.decorators import login_required
 
 from core.views.register_view import RegisterView
@@ -26,6 +27,7 @@ urlpatterns = [
     path('login/', LoginView.as_view()),
     path('register/', RegisterView.as_view(), name='user_register'),
     path('', login_required(HomeView.as_view()), name='home'),
+    path('adm/', login_required(AdminView.as_view()), name='admin'),
     
     path('admin/', admin.site.urls),
     path('password_reset/', PasswordResetView.as_view(), name='password_reset'),

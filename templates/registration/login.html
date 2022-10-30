@@ -22,12 +22,9 @@
         {{ form.password|attr:"class: form-control"|attr:"placeholder: Senha" }}
         <input type="hidden" name="next" value="{{ next }}">
     </div>
-    {% url 'admin_password_reset' as password_reset_url %}
-    {% if password_reset_url %}
         <div class="password-reset-link">
             <a href="{% url 'password_reset_url' %}">{% translate 'Forgotten your password or username?' %}</a>
         </div>
-    {% endif %}
     <div class="submit-row mt-5">
         <a href="{% url 'home_view' %}">
             <button class="btn btn-primary" type="submit"><i class="fa-solid fa-right-to-bracket"></i>&nbsp;Login</button>

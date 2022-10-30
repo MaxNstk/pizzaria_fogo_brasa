@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.contrib.auth.views import *
+from core.views.home_view import HomeView
 
 from core.views.register_view import RegisterView
 
@@ -23,9 +24,10 @@ urlpatterns = [
     path('logout/', LogoutView.as_view()),
     path('login/', LoginView.as_view()),
     path('register/', RegisterView.as_view(), name='register_view'),
+    path('', HomeView.as_view(), name='home_view'),
     
     path('admin/', admin.site.urls),
-        path('password_reset/', PasswordResetView.as_view(), name='admin_password_reset'),
+    path('password_reset/', PasswordResetView.as_view(), name='password_reset_url'),
 
     # path('password_change/<str:model>/<int:pk>/', PasswordChangeView.as_view(),
     #      name='admin_password_change'),

@@ -1,8 +1,8 @@
-from django.contrib.auth.views import LogoutView as AuthLogoutView
+from django.contrib.auth.views import LogoutView as DjangoLogoutView
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-class LogoutView(AuthLogoutView):
+class LogoutView(DjangoLogoutView):
 
     def get(self, request, *args, **kwargs):
         if not request.user.is_authenticated:

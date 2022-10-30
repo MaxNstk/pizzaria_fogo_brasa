@@ -32,11 +32,11 @@
                 <li><a><i class="fa-solid fa-user p-2 m-1"></i>&nbsp;&nbsp;Clientes</a></li>
             </ul>
             <div class="mt-5">
-                <a><i class="fa-solid fa-arrow-right-from-bracket"></i>&nbsp;Sair</a> 
+                <a href="{% url 'logout' %}"><i class="fa-solid fa-arrow-right-from-bracket"></i>&nbsp;Sair</a> 
             </div>
         </div>
         <div id="content">
-           
+           {% block content %}{% endblock %}
         </div>
     </div>
 </body>
@@ -61,7 +61,6 @@ body{
 #nav{
     color: #FFFFFF;
     background-color: #161719;
-    width: 15%;
     padding: 2% 2%;
     height: calc(100vh - 4em);
     position: absolute;

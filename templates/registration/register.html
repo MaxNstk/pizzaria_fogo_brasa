@@ -1,2 +1,6 @@
+{% extends "admin_home.html" %}
 {% load widget_tweaks crispy_forms_tags i18n static %}
-{% crispy form %}
+
+{% block content %}
+    {% crispy form %}
+{% endblock %}

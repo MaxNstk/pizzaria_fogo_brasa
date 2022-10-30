@@ -5,7 +5,7 @@ class FormHandlerMixin():
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-        self.layout = self.get_layout()
+        self.helper.layout = self.build_layout()
 
-    def get_layout(self):
+    def build_layout(self):
         return None

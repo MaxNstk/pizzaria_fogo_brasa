@@ -15,9 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
+from django.contrib.auth.views import LogoutView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
+from core.views.auth.login_view import LoginView
 from core.views.home_view import HomeView
-from core.views.admin_view import AdminView
 from django.contrib.auth.decorators import login_required
 
 from core.views.register_view import RegisterView
@@ -27,7 +27,6 @@ urlpatterns = [
     # public views
     path('register/', RegisterView.as_view(), name='user_register'),
     path('', login_required(HomeView.as_view()), name='home'),
-    path('adm/', login_required(AdminView.as_view()), name='admin'),
     
     path('admin/', admin.site.urls),
     path('login/', LoginView.as_view(), name='login'),

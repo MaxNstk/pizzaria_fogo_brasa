@@ -13,7 +13,7 @@
                 "runserver"
             ],
             "django": true,
-            "justMyCode": true
+            "justMyCode": false
         },
         {
             "name": "comando",
@@ -24,7 +24,7 @@
                 "create_initial_data"
             ],
             "django": true,
-            "justMyCode": true
+            "justMyCode": false
         }
     ]
 }

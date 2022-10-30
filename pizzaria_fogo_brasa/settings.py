@@ -14,6 +14,8 @@ from pathlib import Path
 from decouple import config
 import os
 
+from django.urls import reverse_lazy
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -143,3 +145,5 @@ EMAIL_HOST_USER = config('EMAIL_ADDRESS')
 EMAIL_HOST_PASSWORD = config('EMAIL_PASSWORD')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 SERVER_EMAIL = EMAIL_HOST_USER
+
+LOGIN_URL=reverse_lazy('login')

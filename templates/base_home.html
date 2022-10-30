@@ -23,7 +23,7 @@
           </div>
     </header>
 
-    <div id="home-content" class="d-flex justify-content-center mt-5">
+    <div id="home-content" class="d-flex justify-content-center mt-4">
         <div class="d-flex flex-row justify-content-center bg-light w-50 p3 rounded">
             <p class="bd-highlight m-2 px-2 font-weight-bold pt-2">COMEÇAR O PEDIDO</p>
             <button class="bd-highlight m-2 px-5 font-weight-bold"><i class="fa-sharp fa-solid fa-moped"></i>&nbsp;ENTREGA</button>
@@ -31,13 +31,15 @@
             <button class="bd-highlight m-2 px-5 font-weight-bold"><i class="fa-solid fa-store"></i>&nbsp;RETIRADA</button>
         </div>
     </div>
-    <div class="d-flex justify-content-center w-50 p3">
-        <div id="photo-grid" class="w-100 p3 mt-5">
-            <div id="large-rectangular-photo"></div>
-            <div id="small-rectangular-photo"></div>
-            <div id="square-photo"></div>
-        </div>
-    </div>    
+    <div id="photo-grid" class="d-flex justify-content-center text-center mt-4">
+        <img class="rounded" src="../static/img/banner_home.jpg" draggable="false">
+    </div>
+    
+    <footer class="mt-4 pt-3 pb-1">
+        <p class="d-flex justify-content-center">
+            <small><strong>Copyright</strong> Pizzaria Fogo Brasa &copy; {% now 'Y' %}</small>
+        </p>
+    </footer>
 </body>
 </html>
 <style>
@@ -65,35 +67,15 @@
         border: none;
         border-radius: 2px;
         box-shadow: 2px 2px 5px #000000;
+        cursor: pointer;
     }
 
-    #photo-grid{
-        display: grid;
-        grid-template-rows: repeat(5, 1fr);
-        grid-column-gap: 0px;
-        grid-row-gap: 0px;
-        height: 100px;
-        grid-column-gap: 10px;
-        grid-row-gap: 10px;
+    footer{
+        background-color: #410000;
+        color: #FFFFFF;
+        position: fixed;
+        bottom:0;
+        left:0;
+        width: 100%;
     }
-
-    #large-rectangular-photo{
-        grid-area: 1 / 1 / 3 / 2;
-        background-image: url("../static/img/home_order_banner.jpg");
-    }
-
-    #small-rectangular-photo{
-        grid-area: 1 / 2 / 2 / 3;
-        background-image: url("../static/img/home_pizza_banner.jpg");
-        width: 280px;
-        height: 150px;
-    }
-
-    #square-photo{
-        grid-area: 2 / 2 / 3 / 3;
-        background-image: url("../static/img/home_feedback_banner.jpg");
-        width: 280px;
-        height: 286px;
-    }
-
 </style>

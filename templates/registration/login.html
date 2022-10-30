@@ -29,7 +29,9 @@
         </div>
     {% endif %}
     <div class="submit-row mt-5">
-        <button class="btn btn-primary" type="submit"><i class="fa-solid fa-right-to-bracket"></i>&nbsp;Login</button>
+        <a href="{% url 'home_view' %}">
+            <button class="btn btn-primary" type="submit"><i class="fa-solid fa-right-to-bracket"></i>&nbsp;Login</button>
+        </a>
     </div>
 </form>
 

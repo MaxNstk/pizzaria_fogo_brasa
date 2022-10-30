@@ -1,5 +1,3 @@
-
-
 from django.forms import ModelForm
 from core.models import Flavor
 

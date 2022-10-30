@@ -1,7 +1,4 @@
-
-
 from core.models.size import Size
-
 
 class SizeForm():
     class Meta:

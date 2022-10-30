@@ -24,11 +24,11 @@ from core.views.register_view import RegisterView
 urlpatterns = [
     path('logout/', LogoutView.as_view()),
     path('login/', LoginView.as_view()),
-    path('register/', RegisterView.as_view(), name='register_view'),
-    path('', login_required(HomeView.as_view()), name='home_view'),
+    path('register/', RegisterView.as_view(), name='user_register'),
+    path('', login_required(HomeView.as_view()), name='home'),
     
     path('admin/', admin.site.urls),
-    path('password_reset/', PasswordResetView.as_view(), name='password_reset_url'),
+    path('password_reset/', PasswordResetView.as_view(), name='password_reset'),
 
     # path('password_change/<str:model>/<int:pk>/', PasswordChangeView.as_view(),
     #      name='admin_password_change'),

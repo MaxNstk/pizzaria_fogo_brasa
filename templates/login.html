@@ -1,18 +1,19 @@
-{% extends 'base_login.html' %}
+{% extends 'base_auth.html' %}
 {% load widget_tweaks crispy_forms_tags i18n static %}
 
 {% block banner_left_content %}
 
 <h1>Seja Bem-Vindo(a)!</h1>
 <p>Informe seus dados para acesso ao sistema</p>   
-<a href="{% url 'register_view' %}">
+<a href="{% url 'user_register' %}">
 <button type="submit" id="btnRegister"><i class="fa-solid fa-square-plus"></i>&nbsp;CADASTRE-SE</button></a><br>
 
 {% endblock %}
 
 {% block banner_right_content %}
 
-<form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
+<form action="{{ app_path }}" method="post" id="login-form">
+    {% csrf_token %}
     <div class="form-group d-flex justify-content-center mt-4">
         {{ form.username.errors }}
         {{ form.username|attr:"class: form-control"|attr:"placeholder: Usuário" }}
@@ -23,10 +24,10 @@
         <input type="hidden" name="next" value="{{ next }}">
     </div>
         <div class="password-reset-link">
-            <a href="{% url 'password_reset_url' %}">{% translate 'Forgotten your password or username?' %}</a>
+            <a href="{% url 'password_reset' %}">{% translate 'Forgotten your password or username?' %}</a>
         </div>
     <div class="submit-row mt-5">
-        <a href="{% url 'home_view' %}">
+        <a href="{% url 'home' %}">
             <button class="btn btn-primary" type="submit"><i class="fa-solid fa-right-to-bracket"></i>&nbsp;Login</button>
         </a>
     </div>

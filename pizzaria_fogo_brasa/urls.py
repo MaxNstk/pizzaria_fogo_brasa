@@ -20,6 +20,7 @@ from core.views.home_view import HomeView
 from django.contrib.auth.decorators import login_required
 
 from core.views.register_view import RegisterView
+from core.views.size.size_create_view import SizeCreateView
 
 urlpatterns = [
 
@@ -43,4 +44,5 @@ urlpatterns = [
     # login required views 
 
     path('', login_required(HomeView.as_view()), name='home'),
+    path('size_create', login_required(SizeCreateView.as_view()), name='size_create'),
 ]

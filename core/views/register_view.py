@@ -7,7 +7,7 @@ from core.models.user import User
 
 class RegisterView(CreateView):
     form_class = RegisterForm
-    template_name= 'registration/register.html'
+    template_name= 'generic_form.html'
 
 
     def get_success_url(self):

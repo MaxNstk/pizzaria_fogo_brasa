@@ -14,7 +14,7 @@
 </head>
 <body>
     <div id="content">
-        <div id="teste" class="d-flex flex-row bd-highlight mb-3 justify-content-center">
+        <div id="banner" class="d-flex flex-row bd-highlight mb-3 justify-content-center">
             <div id="banner-image">
                 <div id="banner-left-content">
                     {% block banner_left_content %} {% endblock %}
@@ -27,12 +27,8 @@
                 </div>
             </div>
         </div>
+
     </div>
-    <footer>
-        <p class="fixed-bottom d-flex justify-content-center">
-            <small><strong>Copyright</strong> Pizzaria Fogo Brasa &copy; {% now 'Y' %}</small>
-        </p>
-    </footer>
 </body>
 </html>
 
@@ -49,7 +45,7 @@
         height: 100%;
     }
 
-    #teste{
+    #banner{
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);

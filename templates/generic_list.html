@@ -1,0 +1,15 @@
+{% extends 'admin_home.html' %}
+{% load widget_tweaks crispy_forms_tags i18n static %}
+
+{% block content %}
+    <table>
+        <tr>
+            {% for header in headers %}
+                <th>{{header}}</th>
+            {% endfor %}
+        </tr>
+    
+        {% block table_content %}{% endblock %}
+
+    </table>
+{% endblock %}

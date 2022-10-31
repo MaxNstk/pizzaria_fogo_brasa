@@ -1,0 +1,14 @@
+{% extends 'generic_list.html' %}
+{% load widget_tweaks crispy_forms_tags i18n static %}
+
+{% block table_content %}
+    {% for object in object_list %}
+        <tr>
+            <td>{{object.short_name}}</td>
+            <td>{{object.description}}</td>
+            <td>{{object.available}}</td>
+            <td><a href=""></a></td>
+        </tr>
+    {% endfor %}
+
+{% endblock %}

@@ -35,7 +35,7 @@
                 <a href="{% url 'logout' %}"><i class="fa-solid fa-arrow-right-from-bracket"></i>&nbsp;Sair</a> 
             </div>
         </div>
-        <div id="content">
+        <div id="content" class="justify-content-end w-100 m-5 p-2">
            {% block content %}{% endblock %}
         </div>
     </div>
@@ -63,7 +63,6 @@ body{
     background-color: #161719;
     padding: 2% 2%;
     height: calc(100vh - 4em);
-    position: absolute;
 }
 
 #nav ul{
@@ -75,7 +74,7 @@ body{
 }
 
 #content{
-    margin-left: 15%;
+    background-color: #FFFFFF;
 }
 
 </style>

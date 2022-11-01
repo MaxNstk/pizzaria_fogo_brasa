@@ -21,11 +21,7 @@ class SizeForm(FormHandlerMixin, ModelForm):
             Div(
                 Div(Field('available'), css_class='col-lg-12')
                 , css_class='row'
-            ),
-            Div(
-                Div(Field('password2'), css_class='col-lg-12')
-                , css_class='row'
-            ),        
+            ),       
             Div(
                 Div(Submit('', 'Gravar', css_class='btn btn-primary w-100'), css_class='col-lg-3'),
                 css_class='row justify-content-between mb-5')

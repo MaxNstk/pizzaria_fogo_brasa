@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block table_content %}
-    {% for object in object_list %}
+    {% for object in page_obj  %}
         <tr>
             <td>{{object.short_name}}</td>
             <td>{{object.description}}</td>

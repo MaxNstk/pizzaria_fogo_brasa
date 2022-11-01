@@ -22,6 +22,7 @@ from django.contrib.auth.decorators import login_required
 from core.views.register_view import RegisterView
 from core.views.size.size_create_view import SizeCreateView
 from core.views.size.size_list_view import SizeListView
+from core.views.flavor.flavor_list_view import FlavorListView
 
 urlpatterns = [
 
@@ -47,4 +48,5 @@ urlpatterns = [
     path('', login_required(HomeView.as_view()), name='home'),
     path('size_create', login_required(SizeCreateView.as_view()), name='size_create'),
     path('size_list', login_required(SizeListView.as_view()), name='size_list'),
+    path('flavor_list', login_required(FlavorListView.as_view()), name='flavor_list'),
 ]

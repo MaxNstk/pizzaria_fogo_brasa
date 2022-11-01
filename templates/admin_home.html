@@ -26,8 +26,8 @@
             <p class="border-bottom text-center mb-5 p-1 font-weight-bold">CADASTROS</p>
             <ul class="list-group">
                 <li><a><i class="fa-sharp fa-solid fa-pizza-slice p-2 m-1"></i>&nbsp;&nbsp;Pizzas</a></li>
-                <li><a><i class="fa-solid fa-bacon p-2 m-1"></i>&nbsp;&nbsp;Sabores</a></li>
-                <li><a href="{% url 'size_create' %}"><i class="fa-solid fa-ruler p-2 m-1"></i>&nbsp;&nbsp;Tamanhos</a></li>
+                <li><a href="{% url 'flavor_list' %}"><i class="fa-solid fa-bacon p-2 m-1"></i>&nbsp;&nbsp;Sabores</a></li>
+                <li><a href="{% url 'size_list' %}"><i class="fa-solid fa-ruler p-2 m-1"></i>&nbsp;&nbsp;Tamanhos</a></li>
                 <li><a><i class="fa-solid fa-wine-glass p-2 m-1"></i>&nbsp;&nbsp;Produtos</a></li>
                 <li><a><i class="fa-solid fa-user p-2 m-1"></i>&nbsp;&nbsp;Clientes</a></li>
             </ul>
@@ -73,9 +73,18 @@ body{
     cursor: pointer;
 }
 
+
+#content{
+    overflow-y: auto;
+}
+
 .table-header{
     background-color: #BABABA;
     color: #000000;
+}
+
+#list-table{
+    box-shadow: 2px 2px 5px #000000;
 }
 
 #list-table tr{
@@ -94,7 +103,7 @@ body{
 }
 
 #generic-form{
-    background-color: #161719;
+    background-color: #292A2D;
     color: #FFFFFF;
     box-shadow: 2px 2px 5px #000000;
 }

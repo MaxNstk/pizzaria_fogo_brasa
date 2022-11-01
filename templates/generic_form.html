@@ -2,5 +2,10 @@
 {% load widget_tweaks crispy_forms_tags i18n static %}
 
 {% block content %}
-    {% crispy form %}
+    <div id="generic-form" class="p-4 rounded">
+        {% crispy form %}
+    </div>
+    <div id="button-group" class="text-right my-4">
+        <button type="submit" class="btn px-4 py-2"><span style="color: #70A401;"><i class="fa-solid fa-floppy-disk p-1"></i></span>&nbsp;Gravar</button>
+    </div>
 {% endblock %}

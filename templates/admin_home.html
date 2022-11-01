@@ -28,7 +28,7 @@
                 <li><a><i class="fa-sharp fa-solid fa-pizza-slice p-2 m-1"></i>&nbsp;&nbsp;Pizzas</a></li>
                 <li><a href="{% url 'flavor_list' %}"><i class="fa-solid fa-bacon p-2 m-1"></i>&nbsp;&nbsp;Sabores</a></li>
                 <li><a href="{% url 'size_list' %}"><i class="fa-solid fa-ruler p-2 m-1"></i>&nbsp;&nbsp;Tamanhos</a></li>
-                <li><a><i class="fa-solid fa-wine-glass p-2 m-1"></i>&nbsp;&nbsp;Produtos</a></li>
+                <li><a href="{% url 'product_list' %}"><i class="fa-solid fa-wine-glass p-2 m-1"></i>&nbsp;&nbsp;Produtos</a></li>
                 <li><a><i class="fa-solid fa-user p-2 m-1"></i>&nbsp;&nbsp;Clientes</a></li>
             </ul>
             <div class="mt-5">
@@ -111,6 +111,10 @@ body{
     background-color: #292A2D;
     color: #FFFFFF;
     box-shadow: 2px 2px 5px #000000;
+}
+
+.step-links{
+    color: #FFFFFF
 }
 
 </style>

@@ -2,14 +2,19 @@
 {% load widget_tweaks crispy_forms_tags i18n static %}
 
 {% block content %}
-    <table>
-        <tr>
-            {% for header in headers %}
-                <th>{{header}}</th>
-            {% endfor %}
-        </tr>
-    
+    <div id="button-group" class="text-right my-4">
+        <button class="btn px-4 py-2"><span style="color: #70A401;"><i class="fa-solid fa-square-plus"></i></span>&nbsp;Incluir</button>
+    </div>
+    <table id="list-table" class="table table-bordered">
+        <thead>
+            <tr>
+                {% for header in headers %}
+                    <th class="table-header text-center">{{header}}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
         {% block table_content %}{% endblock %}
-
+        </tbody>
     </table>
 {% endblock %}

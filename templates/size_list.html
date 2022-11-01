@@ -12,7 +12,7 @@
         <tr>
             <td>{{object.short_name}}</td>
             <td>{{object.description}}</td>
-            <td>{{object.available}}</td>
+            <td>{{object.available|yesno:"Sim, Não" }}</td>
             <td class="text-center"><a href="{% url 'size_update' object.pk %}"><span style="color: #FF7A00; background-color: #FFFFFF; border-radius: 3px;"><i class="fa-solid fa-pen m-1"></i></span></a></td>
         </tr>
     {% endfor %}

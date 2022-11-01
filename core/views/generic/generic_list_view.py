@@ -1,4 +1,3 @@
-from multiprocessing import context
 from django.views.generic import ListView
 
 class GenericListView(ListView):

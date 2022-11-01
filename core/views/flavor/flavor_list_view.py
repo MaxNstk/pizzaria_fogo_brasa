@@ -1,5 +1,5 @@
 from core.models.flavor import Flavor
-from core.views.generic_list_view import GenericListView
+from core.views.generic.generic_list_view import GenericListView
 
 
 class FlavorListView(GenericListView):

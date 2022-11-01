@@ -1,5 +1,5 @@
 from core.models.size import Size
-from core.views.generic_list_view import GenericListView
+from core.views.generic.generic_list_view import GenericListView
 
 
 class SizeListView(GenericListView):

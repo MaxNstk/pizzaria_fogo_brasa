@@ -3,12 +3,12 @@
 
 {% block button_include %}
     <div id="button-group" class="text-right my-4">
-        <a href=""><button class="btn px-4 py-2"><span style="color: #70A401;"><i class="fa-solid fa-square-plus p-1"></i></span>&nbsp;Incluir</button></a>
+        <a href="{% url 'flavor_create' %}"><button class="btn px-4 py-2"><span style="color: #70A401;"><i class="fa-solid fa-square-plus p-1"></i></span>&nbsp;Incluir</button></a>
     </div>
 {% endblock %}
 
 {% block table_content %}
-    {% for object in object_list %}
+    {% for object in page_obj %}
         <tr>
             <td>{{object.name}}</td>
             <td>{{object.description}}</td>

@@ -23,6 +23,6 @@ class SizeForm(FormHandlerMixin, ModelForm):
                 , css_class='row'
             ),       
             Div(
-                Div(Submit('', 'Gravar', css_class='btn btn-primary w-100'), css_class='col-lg-3'),
+                Div(Submit('', 'Gravar', css_class='btn btn-primary w-100 button-form'), css_class='col-lg-3'),
                 css_class='row justify-content-between mb-5')
         )

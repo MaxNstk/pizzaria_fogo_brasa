@@ -24,6 +24,8 @@ from core.views.size.size_create_view import SizeCreateView
 from core.views.size.size_list_view import SizeListView
 from core.views.size.size_update_view import SizeUpdateView
 from core.views.flavor.flavor_list_view import FlavorListView
+from core.views.flavor.flavor_create_view import FlavorCreateView
+from core.views.flavor.flavor_update_view import FlavorUpdateView
 
 urlpatterns = [
 
@@ -50,5 +52,8 @@ urlpatterns = [
     path('size_create', login_required(SizeCreateView.as_view()), name='size_create'),
     path('size_list', login_required(SizeListView.as_view()), name='size_list'),
     path('size_update/<int:pk>', login_required(SizeUpdateView.as_view()), name='size_update'),
+
     path('flavor_list', login_required(FlavorListView.as_view()), name='flavor_list'),
+    path('flavor_create', login_required(FlavorCreateView.as_view()), name='flavor_create'),
+    path('flavor_update/<int:pk>', login_required(FlavorUpdateView.as_view()), name='flavor_update'),
 ]

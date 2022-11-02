@@ -10,4 +10,4 @@ class FlavorListView(GenericListView):
         return Flavor.objects.all()
 
     def set_table_headers(self):
-        return ['Nome', 'Descrição', 'Disponível', 'Editar']
+        return ['Nome', 'Descrição', 'Disponível', 'Ações']

@@ -54,9 +54,9 @@ class Order(models.Model):
         if not self.id:
             return super().save(*args, **kwargs)
         pizzas_value = self.pizzas.all().aggregate(
-            total_price=models.Sum('price'))['total_price']
+            total_price=models.Sum('price'))['total_price'] or 0
         products_value = self.products.all().aggregate(
-            total_price=models.Sum('price'))['total_price'] 
+            total_price=models.Sum('price'))['total_price'] or 0 
         self.original_value = pizzas_value + products_value
         self.total_value = self.original_value + self.increase - self.discount
         return super().save(*args, **kwargs)

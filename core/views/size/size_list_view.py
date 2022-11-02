@@ -10,4 +10,4 @@ class SizeListView(GenericListView):
         return Size.objects.all()
 
     def set_table_headers(self):
-        return ['Sigla', 'Descrição', 'Disponível', 'Editar']
+        return ['Sigla', 'Descrição', 'Disponível', 'Ações']

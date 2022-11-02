@@ -10,4 +10,4 @@ class ProductListView(GenericListView):
         return Product.objects.all()
 
     def set_table_headers(self):
-        return ['Descrição', 'Preço', 'Disponível', 'Editar']
+        return ['Descrição', 'Preço', 'Disponível', 'Ações']

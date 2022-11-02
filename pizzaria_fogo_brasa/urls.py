@@ -14,8 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 from django.contrib.auth.views import LogoutView, LoginView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
+from core.api.v1.custom_router import CustomRouter
 from core.views.home_view import HomeView
 from django.contrib.auth.decorators import login_required
 
@@ -31,6 +32,7 @@ from core.views.product.product_create_view import ProductCreateView
 from core.views.product.product_update_view import ProductUpdateView
 from core.views.customer.customer_list_view import CustomerListView
 
+router = CustomRouter()
 urlpatterns = [
 
     # public views
@@ -49,6 +51,9 @@ urlpatterns = [
          PasswordResetConfirmView.as_view(),name='password_reset_confirm'),
     path('reset/done/', PasswordResetCompleteView.as_view(),
          name='password_reset_complete'),
+
+    # api urls
+    path('api/v1/', include(router.urls)),
 
     # login required views 
 

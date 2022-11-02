@@ -12,3 +12,4 @@ class PizzaForm(ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['flavor'].queryset = Flavor.objects.filter(available=True)
         self.fields['size'].queryset = Size.objects.filter(available=True)
+        

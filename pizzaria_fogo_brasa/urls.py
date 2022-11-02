@@ -29,6 +29,7 @@ from core.views.flavor.flavor_update_view import FlavorUpdateView
 from core.views.product.product_list_view import ProductListView
 from core.views.product.product_create_view import ProductCreateView
 from core.views.product.product_update_view import ProductUpdateView
+from core.views.customer.customer_list_view import CustomerListView
 
 urlpatterns = [
 
@@ -63,4 +64,6 @@ urlpatterns = [
     path('product_list', login_required(ProductListView.as_view()), name='product_list'),
     path('product_create', login_required(ProductCreateView.as_view()), name='product_create'),
     path('product_update/<int:pk>', login_required(ProductUpdateView.as_view()), name='product_update'),
+
+    path('customer_list', login_required(CustomerListView.as_view()), name='customer_list'),
 ]

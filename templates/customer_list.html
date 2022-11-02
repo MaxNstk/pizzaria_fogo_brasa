@@ -13,8 +13,12 @@
             <td>{{object.first_name}}</td>
             <td>{{object.cpf_cnpj}}</td>
             <td>{{object.email}}</td>
-            <td class="text-center"><a href=""><span style="color: #FF0000; background-color: #FFFFFF; border-radius: 3px;"><i class="fa-sharp fa-solid fa-ban m-1"></i></span></a></td>
+            <td class="text-center"><a onclick="blockUser({{object.id}})"><span style="color: #FF0000; background-color: #FFFFFF; border-radius: 3px;"><i class="fa-sharp fa-solid fa-ban m-1"></i></span></a></td>
         </tr>
     {% endfor %}
 
+{% endblock %}
+
+{% block scripts %} 
+    <script src="{% static 'js/block_user.js' %}"></script>
 {% endblock %}

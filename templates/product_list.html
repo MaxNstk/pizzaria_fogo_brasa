@@ -12,9 +12,9 @@
         <tr>
             <td>{{object.description}}</td>
             <td>{{object.price}}</td>
-            <td>{{object.available|yesno:"Sim, Não" }}</td>
+            <td>{{object.is_active|yesno:"Sim, Não" }}</td>
             <td class="text-center"><a href="{% url 'product_update' object.pk %}"><span style="color: #FF7A00; background-color: #FFFFFF; border-radius: 3px;"><i class="fa-solid fa-pen m-1"></i></span></a>
-            {% if object.available %}
+            {% if object.is_active %}
                 <a href=""><span style="color: #70A401; background-color: #FFFFFF; border-radius: 3px;"><i class="fa-sharp fa-solid fa-check m-1"></i></span></td>
             {% else %}
                 <a href=""><span style="color: #D70000; background-color: #FFFFFF; border-radius: 3px;"><i class="fa-sharp fa-solid fa-empty-set m-1"></i></span></td>

@@ -7,7 +7,7 @@ from crispy_forms.layout import Submit, Layout, Div, Field
 class ProductForm(FormHandlerMixin,ModelForm):
     class Meta:
         model = Product
-        fields = ['description','price','available']
+        fields = ['description','price','is_active']
 
     def build_layout(self):
         return Layout(
@@ -20,7 +20,7 @@ class ProductForm(FormHandlerMixin,ModelForm):
                 css_class='row'
             ),
             Div(
-                Div(Field('available'), css_class='col-lg-12')
+                Div(Field('is_active'), css_class='col-lg-12')
                 , css_class='row'
             ),       
             Div(

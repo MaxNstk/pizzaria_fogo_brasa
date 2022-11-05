@@ -26,13 +26,13 @@
             <div class="text-center">
                 {% if page_obj.has_previous %}
                 <div class="page-content">
-                    <a href="?page={{ page_obj.previous_page_number }}"><i class="fa-solid fa-square-caret-left"></i>&nbsp;Anterior</a>
+                    <a href="?page={{ page_obj.previous_page_number }}"><i class="fa-solid fa-square-caret-left"></i>&nbsp;&nbsp;Anterior</a>
                 </div>    
                 {% endif %}
 
                 {% if page_obj.has_next %}
                 <div class="page-content">
-                    <a href="?page={{ page_obj.next_page_number }}">Próximo&nbsp;<i class="fa-solid fa-square-caret-right"></i></a>
+                    <a href="?page={{ page_obj.next_page_number }}">Próximo&nbsp;&nbsp;<i class="fa-solid fa-square-caret-right"></i></a>
                 </div>
                 {% endif %}
             </div>

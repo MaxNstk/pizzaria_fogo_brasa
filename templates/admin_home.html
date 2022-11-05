@@ -14,11 +14,11 @@
             </div>
             <p class="border-bottom text-center mb-5 p-1 font-weight-bold">CADASTROS</p>
             <ul class="list-group">
-                <li><a><i class="fa-sharp fa-solid fa-pizza-slice p-2 m-1"></i>&nbsp;&nbsp;Pizzas</a></li>
-                <li><a href="{% url 'flavor_list' %}"><i class="fa-solid fa-bacon p-2 m-1"></i>&nbsp;&nbsp;Sabores</a></li>
-                <li><a href="{% url 'size_list' %}"><i class="fa-solid fa-ruler p-2 m-1"></i>&nbsp;&nbsp;Tamanhos</a></li>
-                <li><a href="{% url 'product_list' %}"><i class="fa-solid fa-wine-glass p-2 m-1"></i>&nbsp;&nbsp;Produtos</a></li>
-                <li><a href="{% url 'customer_list' %}"><i class="fa-solid fa-user p-2 m-1"></i>&nbsp;&nbsp;Clientes</a></li>
+                <a><i class="fa-sharp fa-solid fa-pizza-slice p-2 m-1"></i>&nbsp;&nbsp;Pizzas</a>
+                <a href="{% url 'flavor_list' %}"><i class="fa-solid fa-bacon p-2 m-1"></i>&nbsp;&nbsp;Sabores</a>
+                <a href="{% url 'size_list' %}"><i class="fa-solid fa-ruler p-2 m-1"></i>&nbsp;&nbsp;Tamanhos</a>
+                <a href="{% url 'product_list' %}"><i class="fa-solid fa-wine-glass p-2 m-1"></i>&nbsp;&nbsp;Produtos</a>
+                <a href="{% url 'customer_list' %}"><i class="fa-solid fa-user p-2 m-1"></i>&nbsp;&nbsp;Clientes</a>
             </ul>
             <div id="nav-footer" class="mt-5">
                 <a href="{% url 'logout' %}"><i class="fa-solid fa-arrow-right-from-bracket"></i>&nbsp;Sair</a> 
@@ -60,7 +60,7 @@ body{
     list-style: none;
 }
 
-#nav li:hover{
+#nav a:hover{
     background-color: #292A2D;
     transition-duration:1s;
 }
@@ -100,6 +100,10 @@ body{
     border: none;
 }
 
+.list-group a{
+    width: 100%;
+}
+
 .button-form:hover{
     background-color: #410000;
 }
@@ -119,7 +123,8 @@ body{
     color: #FFFFFF;
     background-color: #410000;
     border-radius: 5px;
-    padding: 0.25em;
+    padding: 0.25em 1em;
+    box-shadow: 2px 2px 5px #000000;
 }
 
 .page-content{

@@ -3,9 +3,6 @@
 
 {% block content %}
 
-    <div id="return-block">
-        <span><a><i class="fa-solid fa-angles-left px-2"></i>Voltar</a></span>
-    </div>
     {% block button_include %}{% endblock %}
     <table id="list-table" class="table table-bordered table-dark">
         <thead>
@@ -28,11 +25,15 @@
             </span>
             <div class="text-center">
                 {% if page_obj.has_previous %}
+                <div class="page-content">
                     <a href="?page={{ page_obj.previous_page_number }}"><i class="fa-solid fa-square-caret-left"></i>&nbsp;Anterior</a>
+                </div>    
                 {% endif %}
 
                 {% if page_obj.has_next %}
-                    <a class="p-1 m-2" href="?page={{ page_obj.next_page_number }}">Próximo&nbsp;<i class="fa-solid fa-square-caret-right"></i></a>
+                <div class="page-content">
+                    <a href="?page={{ page_obj.next_page_number }}">Próximo&nbsp;<i class="fa-solid fa-square-caret-right"></i></a>
+                </div>
                 {% endif %}
             </div>
         </span>

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load widget_tweaks crispy_forms_tags i18n static %}
+
+{% block body %}
+<header id="registration-header" class="d-flex align-items-center">
+    <div class="text-center w-100">
+        <p style="font-size: 20px;" class="font-weight-bold m-1">CADASTRO</p>
+    </div>
+</header>
+<div class="text-center">
+    <img src="../static/img/favicon.png" width="150px" draggable="false">
+</div>
+<div class="w-100 d-flex justify-content-center">
+    <div id="generic-form" class="w-75 p-4 rounded mx-5 mb-5">
+        {% crispy form %}
+    </div>
+</div>
+
+
+
+<style>
+    #registration-header{
+        background-color: #410000;
+        color: #FFFFFF;
+        height: 5em;
+    }
+
+    #generic-form{
+        border: 1px solid #909090;
+    }
+
+    #btn-create-account{
+        background-color: #70A401;
+        color: #FFFFFF;
+        border: none;
+    }
+
+    #btn-create-account:hover{
+        background-color: #567e00;
+        transition-duration: 1s;
+    }
+</style>
+{% endblock %}

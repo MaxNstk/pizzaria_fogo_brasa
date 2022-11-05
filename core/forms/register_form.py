@@ -13,16 +13,25 @@ class RegisterForm(FormHandlerMixin, UserCreationForm):
     def build_layout(self):
         return Layout(
             Div(
-                Div(Field('first_name'), css_class='col-lg-6'),
-                Div(Field('last_name'), css_class='col-lg-6'),
+                Div(Field('first_name'), css_class='col-lg-12'),
                 css_class='row'
             ),
             Div(
-                Div(Field('username'), css_class='col-lg-4'),
-                Div(Field('cpf_cnpj'), css_class='col-lg-4'),
-                Div(Field('phone_number'), css_class='col-md-4')
+                Div(Field('last_name'), css_class='col-lg-12')
                 , css_class='row'
             ),
+            Div(
+                Div(Field('phone_number'), css_class='col-lg-12')
+                , css_class='row'
+            ),
+            Div(
+                Div(Field('cpf_cnpj'), css_class='col-lg-12')
+                , css_class='row'
+            ), 
+            Div(
+                Div(Field('phone_number'), css_class='col-lg-12')
+                , css_class='row'
+            ), 
             Div(
                 Div(Field('password1'), css_class='col-lg-12')
                 , css_class='row'
@@ -32,6 +41,6 @@ class RegisterForm(FormHandlerMixin, UserCreationForm):
                 , css_class='row'
             ),        
             Div(
-                Div(Submit('', 'Cadastrar', css_class='btn btn-primary w-100'), css_class='col-lg-3'),
-                css_class='row justify-content-between mb-5')
+                Div(Submit('', 'Cadastrar-se', css_class='btn w-100', css_id="btn-create-account"), css_class='col-lg-6'),
+                css_class='row justify-content-center mb-5')
         )

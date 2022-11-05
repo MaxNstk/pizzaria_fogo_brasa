@@ -10,4 +10,4 @@ class CustomerListView(GenericListView):
         return User.objects.all()
 
     def set_table_headers(self):
-        return ['Nome', 'CPF', 'E-mail', 'Editar']
+        return ['Nome', 'CPF', 'E-mail', 'Ações']

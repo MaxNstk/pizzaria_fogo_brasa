@@ -13,7 +13,11 @@
             <td>{{object.first_name}}</td>
             <td>{{object.cpf_cnpj}}</td>
             <td>{{object.email}}</td>
-            <td class="text-center"><a onclick="blockUser({{object.id}})"><span style="color: #FF0000; background-color: #FFFFFF; border-radius: 3px;"><i class="fa-sharp fa-solid fa-ban m-1"></i></span></a></td>
+            {% if object.is_active %}
+                <td class="text-center"><a onclick="blockUser({{object.id}})"><span style="color: #FF0000; background-color: #FFFFFF; border-radius: 3px; cursor: pointer;"><i class="fa-sharp fa-solid fa-ban m-1"></i></span></a></td>
+            {% else %}
+                <td class="text-center"><a onclick=""><span style="color: #70A401; background-color: #FFFFFF; border-radius: 3px; cursor: pointer;"><i class="fa-sharp fa-solid fa-circle-check"></i></span></a></td>    
+            {% endif %} 
         </tr>
     {% endfor %}
 

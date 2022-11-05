@@ -13,12 +13,13 @@
             <td>{{object.short_name}}</td>
             <td>{{object.description}}</td>
             <td>{{object.is_active|yesno:"Sim, Não" }}</td>
-            <td class="text-center"><a href="{% url 'size_update' object.pk %}"><span style="color: #FF7A00; background-color: #FFFFFF; border-radius: 3px;"><i class="fa-solid fa-pen m-1"></i></span></a>
-            {% if object.is_active %}
-                <a onclick="handleSizeActivation({{object.id}},{{object.is_active|lower}})"><span style="color: #70A401; background-color: #FFFFFF; border-radius: 3px;"><i class="fa-sharp fa-solid fa-check m-1"></i></span></td>
-            {% else %}
-                <a onclick="handleSizeActivation({{object.id}},{{object.is_active|lower}})"><span style="color: #D70000; background-color: #FFFFFF; border-radius: 3px;"><i class="fa-sharp fa-solid fa-empty-set m-1"></i></span></td>
-            {% endif %} 
+            <td class="text-center">
+                <a href="{% url 'size_update' object.pk %}"><span style="color: #FF7A00; background-color: #FFFFFF; border-radius: 3px;"><i class="fa-solid fa-pen m-1"></i></span></a>
+                {% if object.is_active %}
+                    <a onclick="handleSizeActivation({{object.id}},{{object.is_active|lower}})"><span style="color: #70A401; background-color: #FFFFFF; border-radius: 3px;"><i class="fa-sharp fa-solid fa-check m-1"></i></span></td>
+                {% else %}
+                    <a onclick="handleSizeActivation({{object.id}},{{object.is_active|lower}})"><span style="color: #D70000; background-color: #FFFFFF; border-radius: 3px;"><i class="fa-sharp fa-solid fa-empty-set m-1"></i></span></td>
+                {% endif %} 
             </td>
         </tr>
     {% endfor %}

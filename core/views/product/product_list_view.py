@@ -11,3 +11,6 @@ class ProductListView(GenericListView):
 
     def set_table_headers(self):
         return ['Descrição', 'Preço', 'Disponível', 'Ações']
+
+    def set_breadcrumbs(self):
+        return 'Produto > Listagem'

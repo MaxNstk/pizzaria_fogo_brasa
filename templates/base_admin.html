@@ -7,6 +7,7 @@
         <button class="btn ml-5 font-weight-bold" style="background-color:rgba(0, 0, 0, 0.5);">CONFIGURAÇÕES</button>
         <button class="btn font-weight-bold">PEDIDOS</button>
     </header>
+    
     <div class="d-flex justify-content-start">
         <div id="nav">
             <div class="text-center mb-4">
@@ -25,6 +26,7 @@
             </div>
         </div>
         <div id="content" class="justify-content-end w-100 m-5 p-2">
+            {{ breadcrumbs }}
            {% block content %}{% endblock %}
         </div>
     </div>

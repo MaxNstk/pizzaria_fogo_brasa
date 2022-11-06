@@ -11,3 +11,6 @@ class CustomerListView(GenericListView):
 
     def set_table_headers(self):
         return ['Nome', 'CPF', 'E-mail', 'Ações']
+
+    def set_breadcrumbs(self):
+        return 'Clientes > Listagem'

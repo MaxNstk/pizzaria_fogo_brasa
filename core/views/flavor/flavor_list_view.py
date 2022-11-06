@@ -11,3 +11,6 @@ class FlavorListView(GenericListView):
 
     def set_table_headers(self):
         return ['Nome', 'Descrição', 'Disponível', 'Ações']
+
+    def set_breadcrumbs(self):
+        return 'Sabor > Listagem'

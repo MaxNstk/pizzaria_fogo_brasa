@@ -43,8 +43,6 @@ urlpatterns = [
     path('login/', LoginView.as_view(template_name="login.html"), name='login'),
     path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
     path('password_reset/', PasswordResetView.as_view(), name='password_reset'),
-    # path('password_change/<str:model>/<int:pk>/', PasswordChangeView.as_view(),
-    #      name='admin_password_change'),
     path('password/reset/success/',
          PasswordResetDoneView.as_view(),name='password_reset_done'),
     path('reset/<str:uidb64>/<str:token>/',

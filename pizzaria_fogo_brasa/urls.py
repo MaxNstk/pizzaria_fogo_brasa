@@ -33,7 +33,9 @@ from core.views.product.product_update_view import ProductUpdateView
 from core.views.customer.customer_list_view import CustomerListView
 
 router = CustomRouter()
-urlpatterns = [
+urlpatterns = [ 
+    # api urls
+    path('api/v1/', include(router.urls)),
 
     # public views
     path('register/', RegisterView.as_view(), name='user_register'),
@@ -49,9 +51,6 @@ urlpatterns = [
          PasswordResetConfirmView.as_view(),name='password_reset_confirm'),
     path('reset/done/', PasswordResetCompleteView.as_view(),
          name='password_reset_complete'),
-
-    # api urls
-    path('api/v1/', include(router.urls)),
 
     # login required views 
 
@@ -69,4 +68,5 @@ urlpatterns = [
     path('product_update/<int:pk>', login_required(ProductUpdateView.as_view()), name='product_update'),
 
     path('customer_list', login_required(CustomerListView.as_view()), name='customer_list'),
+
 ]

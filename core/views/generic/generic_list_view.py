@@ -1,8 +1,9 @@
 from django.views.generic import ListView
-from django.utils.translation import gettext as _
+
+from core.mixins.dispatch_user_mixin import UserDispatchMixin
 
 
-class GenericListView(ListView):
+class GenericListView(UserDispatchMixin, ListView):
 
     paginate_by = 10
 

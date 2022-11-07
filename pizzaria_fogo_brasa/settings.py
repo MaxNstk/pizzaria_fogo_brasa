@@ -131,6 +131,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -149,5 +151,3 @@ SERVER_EMAIL = EMAIL_HOST_USER
 
 LOGIN_URL=reverse_lazy('login')
 LOGIN_REDIRECT_URL=reverse_lazy('home')
-
-CRISPY_TEMPLATE_PACK = 'bootstrap4'

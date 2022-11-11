@@ -15,8 +15,34 @@
         {% crispy form %}
     </div>
 </div>
+<script
+  src="https://code.jquery.com/jquery-3.6.1.min.js"
+  integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+  crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+
+<script>
 
 
+    $(document).ready(function($){
+
+        $('#id_phone_number').mask('(00) 0000-0000');
+        
+        var options = {
+            onKeyPress: function (cpf, ev, el, op) {
+                var masks = ['000.000.000-000', '00.000.000/0000-00'], 
+                mask = (cpf.length > 14) ? masks[1] : masks[0];
+                el.mask(mask, op);
+            }
+        }
+
+        $('#id_cpf_cnpj').mask('000.000.000-000', options);
+
+    });
+
+
+</script>
 
 <style>
     #registration-header{

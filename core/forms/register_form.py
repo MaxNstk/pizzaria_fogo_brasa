@@ -29,10 +29,6 @@ class RegisterForm(FormHandlerMixin, UserCreationForm):
                 , css_class='row'
             ), 
             Div(
-                Div(Field('phone_number'), css_class='col-lg-12')
-                , css_class='row'
-            ), 
-            Div(
                 Div(Field('password1'), css_class='col-lg-12')
                 , css_class='row'
             ),

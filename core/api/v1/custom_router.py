@@ -14,3 +14,5 @@ class CustomRouter(DefaultRouter):
         self.register('size', SizeViewSet)
         self.register('flavor', FlavorViewSet)
         self.register('product', ProductViewSet)
+
+        

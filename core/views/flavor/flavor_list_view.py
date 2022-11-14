@@ -14,3 +14,5 @@ class FlavorListView(GenericListView):
 
     def set_breadcrumbs(self):
         return 'Sabor > Listagem'
+
+        

@@ -6,4 +6,4 @@ class Product(models.Model):
     is_active =  models.BooleanField(default=True, verbose_name='Disponível')
 
     def __str__(self) -> str:
-        return f'{self.description}, R$:{self.price}'
+        return f'{self.description}, R$: {self.price}'

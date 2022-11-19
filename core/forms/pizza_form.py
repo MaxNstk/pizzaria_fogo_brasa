@@ -10,6 +10,8 @@ class PizzaForm(ModelForm):
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['flavor'].queryset = Flavor.objects.filter(available=True)
-        self.fields['size'].queryset = Size.objects.filter(available=True)
+        if self.instance:
+            return
+        self.fields['flavor'].queryset = Flavor.objects.filter(is_active=True)
+        self.fields['size'].queryset = Size.objects.filter(is_active=True)
         

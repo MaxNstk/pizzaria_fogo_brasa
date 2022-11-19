@@ -13,11 +13,12 @@ class RegisterForm(FormHandlerMixin, UserCreationForm):
     def build_layout(self):
         return Layout(
             Div(
-                Div(Field('first_name'), css_class='col-lg-12'),
+                Div(Field('first_name'), css_class='col-lg-6'),
+                Div(Field('last_name'), css_class='col-lg-6'),
                 css_class='row'
             ),
             Div(
-                Div(Field('last_name'), css_class='col-lg-12')
+                Div(Field('username'), css_class='col-lg-12')
                 , css_class='row'
             ),
             Div(

@@ -1,24 +1,13 @@
-"""pizzaria_fogo_brasa URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import include, path
 from django.contrib.auth.views import LogoutView, LoginView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 from core.api.v1.custom_router import CustomRouter
 from core.views.home_view import HomeView
 from django.contrib.auth.decorators import login_required
+from core.views.order.order_create_view import OrderCreateView
+from core.views.pizza.pizza_create_view import PizzaCreateView
+from core.views.pizza.pizza_update_view import PizzaUpdateView
+from core.views.pizza.pizza_list_view import PizzaListView
 
 from core.views.register_view import RegisterView
 from core.views.size.size_create_view import SizeCreateView
@@ -68,5 +57,11 @@ urlpatterns = [
     path('product_update/<int:pk>', login_required(ProductUpdateView.as_view()), name='product_update'),
 
     path('customer_list', login_required(CustomerListView.as_view()), name='customer_list'),
+
+    path('pizza_list', login_required(PizzaListView.as_view()), name='pizza_list'),
+    path('pizza_create', login_required(PizzaCreateView.as_view()), name='pizza_create'),
+    path('pizza_update/<int:pk>', login_required(PizzaUpdateView.as_view()), name='pizza_update'),
+    
+    path('order_create', login_required(OrderCreateView.as_view()), name='order_create'),
 
 ]

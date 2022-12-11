@@ -8,7 +8,7 @@ class RegisterForm(FormHandlerMixin, UserCreationForm):
 
     class Meta:
         model= User
-        fields = ("first_name", "last_name", 'phone_number', 'cpf_cnpj', "username","password1", "password2")
+        fields = ("first_name", "last_name",'email', 'phone_number', 'cpf_cnpj', "username","password1", "password2")
     
     def build_layout(self):
         return Layout(
@@ -19,6 +19,10 @@ class RegisterForm(FormHandlerMixin, UserCreationForm):
             ),
             Div(
                 Div(Field('username'), css_class='col-lg-12')
+                , css_class='row'
+            ),
+            Div(
+                Div(Field('email'), css_class='col-lg-12')
                 , css_class='row'
             ),
             Div(

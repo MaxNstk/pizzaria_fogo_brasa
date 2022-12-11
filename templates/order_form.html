@@ -24,3 +24,12 @@
         }
     </style>
 {% endblock %}
+
+{% block scripts %}
+    <script defer>
+        $(document).ready(function() {
+        $('#id_pizzas').select2();
+        $('#id_products').select2();
+    }); 
+    </script>
+{% endblock %}

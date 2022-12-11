@@ -2,9 +2,11 @@
 {% load widget_tweaks crispy_forms_tags i18n static %}
 {% block content %}
 
-    <div id="generic-form" class="px-5 rounded w-75 my-4">
+    <div id="generic-form" class="px-5 rounded w-50 my-4">
         <h1 class="text-center mt-4">Monte seu Pedido!</h1><br>
-        {% crispy form %}
+        <div class="d-flex justify-content-center">
+            {% crispy form %}  
+        </div>
     </div>
 
     <style>

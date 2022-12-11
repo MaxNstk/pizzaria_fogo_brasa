@@ -3,10 +3,7 @@
 
 {% block body %}
 
-    <header id="admin-navbar">
-        <a href="{% url 'pizza_list' %}"><button class="btn ml-5 font-weight-bold" style="background-color:rgba(0, 0, 0, 0.5);">CONFIGURAÇÕES</button></a>
-        <a href="{% url 'order_list' %}"><button class="btn font-weight-bold">PEDIDOS</button></a>
-    </header>
+    <header id="admin-navbar" class="py-4"></header>
     
     <div class="d-flex justify-content-start">
         <div id="nav">
@@ -20,6 +17,10 @@
                 <a href="{% url 'size_list' %}"><i class="fa-solid fa-ruler p-2 m-1"></i>&nbsp;&nbsp;Tamanhos</a>
                 <a href="{% url 'product_list' %}"><i class="fa-solid fa-wine-glass p-2 m-1"></i>&nbsp;&nbsp;Produtos</a>
                 <a href="{% url 'customer_list' %}"><i class="fa-solid fa-user p-2 m-1"></i>&nbsp;&nbsp;Clientes</a>
+            </ul>
+            <p class="border-bottom text-center mb-5 p-1 font-weight-bold mt-5">PEDIDOS</p>
+            <ul class="list-group">
+                <a href="{% url 'order_list' %}"><i class="fa-sharp fa-solid fa-clock p-2 m-1"></i>&nbsp;&nbsp;Pendentes</a>
             </ul>
             <div id="nav-footer" class="mt-5">
                 <a href="{% url 'logout' %}"><i class="fa-solid fa-arrow-right-from-bracket"></i>&nbsp;Sair</a> 
@@ -43,12 +44,6 @@ body{
 #admin-navbar{
     background: linear-gradient(90deg, rgba(0,0,0,1) -8%, rgba(80,2,2,1) 30%, rgba(65,0,0,1) 100%);
     width: 100%;
-}
-
-#admin-navbar button{
-    background-color:rgba(0, 0, 0, 0);
-    color: white;
-    height: 4em;
 }
 
 #nav{

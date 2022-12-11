@@ -7,8 +7,8 @@
             <img src="../static/img/logo_home.png" width="200px" draggable="false">
         </div>
         <div class="d-flex justify-content-center mb-3">
-            <a class="bd-highlight font-weight-bold p-3 mx-2 rounded">PÁGINA INICIAL</a>
-            <a class="bd-highlight font-weight-bold p-3 mx-2 rounded">DELIVERY</a>
+            <a href="{% url 'home' %}" class="bd-highlight font-weight-bold p-3 mx-2 rounded">PÁGINA INICIAL</a>
+            <a href="{% url 'order_create' %}" class="bd-highlight font-weight-bold p-3 mx-2 rounded">DELIVERY</a>
             <a class="bd-highlight font-weight-bold p-3 mx-2 rounded">PEDIDOS</a>
             <a href="{% url 'logout' %}" class="bd-highlight font-weight-bold p-3 mx-2 rounded">SAIR</a>
         </div>

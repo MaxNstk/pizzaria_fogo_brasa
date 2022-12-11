@@ -1,0 +1,20 @@
+{% extends "base_customer.html" %}
+{% load widget_tweaks crispy_forms_tags i18n static %}
+{% block content %}
+    <div id="generic-form" class="p-4 rounded">
+        {% crispy form %}
+    </div>
+
+    <style>
+
+        #btn-create-order{
+            background-color: #70A401;
+            color: #FFFFFF;
+            border: none;
+        }
+        #btn-create-order:hover{
+            background-color: #567e00;
+            transition-duration: 1s;
+        }
+    </style>
+{% endblock %}

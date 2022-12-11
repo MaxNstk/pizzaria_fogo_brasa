@@ -1,19 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'base_customer.html' %}
 
-{% block body %}
-
-<header id="navbar">
-        <div class="d-flex justify-content-center">
-            <img src="../static/img/logo_home.png" width="200px" draggable="false">
-        </div>
-        <div class="d-flex justify-content-center mb-3">
-            <a class="bd-highlight font-weight-bold p-3 mx-2 rounded">PÁGINA INICIAL</a>
-            <a class="bd-highlight font-weight-bold p-3 mx-2 rounded">DELIVERY</a>
-            <a class="bd-highlight font-weight-bold p-3 mx-2 rounded">PEDIDOS</a>
-            <a href="{% url 'logout' %}" class="bd-highlight font-weight-bold p-3 mx-2 rounded">SAIR</a>
-        </div>
-    </header>
-
+{% block content %}
     <div class="d-flex justify-content-center mt-5">
         <div id="home-content" class="w-50 text-center rounded py-5">
             <h1>A vida é melhor com pizza!!!</h1><br>
@@ -24,77 +11,6 @@
             </div>
         </div>
     </div>
-    
-    <footer class="mt-4 pt-3 pb-1">
-        <p class="d-flex justify-content-center">
-            <small><strong>Copyright</strong> Pizzaria Fogo Brasa &copy; {% now 'Y' %}</small>
-        </p>
-    </footer>
 {% endblock %}
 
-{% block styles %}
-
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap');
-
-    body{
-        background: 
-        linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-        url("../static/img/fundo_pizza.jpg");
-        background-size: cover;
-    }
-
-    #navbar{
-        background-color: #410000;
-        color: #FFFFFF;
-    }
-
-    #navbar a{
-        cursor: pointer;
-        text-decoration: none;
-        color: #FFFFFF;
-    }
-
-    #navbar a:hover{
-        background-color: #300000;
-        transition-duration: 1s;
-    }
-
-    #home-content{
-        background-color: #0000005e;
-    }
-
-    #home-content h1{
-        text-transform: uppercase;
-        font-weight: 700;
-        margin-bottom: 1rem;
-        color: #ffc506;
-        font-family: 'Caveat', cursive;
-    }
-
-    #home-content h4{
-        text-transform: uppercase;
-        font-weight: 400;
-        margin-bottom: 3rem;
-        color: #FFFFFF;
-        font-family: 'Caveat', cursive;
-    }
-
-    .btn-delivery{
-        background-color: #410000;
-        color: #FFFFFF;
-        box-shadow: 2px 2px 5px #000000;
-    }
-
-    footer{
-        background-color: #410000;
-        color: #FFFFFF;
-        position: fixed;
-        bottom:0;
-        left:0;
-        width: 100%;
-    }
-</style>
-
-{% endblock %}
 

@@ -1,0 +1,59 @@
+{% extends 'base_admin.html' %}
+{% load widget_tweaks crispy_forms_tags i18n static %}
+
+{% block content %}
+    {% for object in page_obj %}
+        <div id="order-banner" class="rounded mt-5 px-3">
+            <table class="table">
+                <tr class="row">
+                    <td class="col"><strong>Pedido:</strong> #{{object.id}}</td>
+                    <td class="col text-right"><strong>Tipo:</strong> {{object.order_type}}</td>
+                </tr>
+                <tr class="row">
+                    <td class="col">{{object.pizzas}}</td>
+                </tr>
+                <tr class="row">
+                    <td class="col">{{object.products}}</td>
+                </tr>
+                <tr class="row">
+                    <td class="col"><strong>Observações:</strong><br> {{object.observation}}</td>
+                    <td class="col">
+                        <div id="button-group" class="text-right">
+                            <a><button class="btn m-2"><span style="color: #FF0000;"><i class="fa-solid fa-circle-xmark p-1"></i></span>&nbsp;Cancelar</button></a><br>
+                            <a><button class="btn m-2"><span style="color: #567e00;"><i class="fa-solid fa-play p-1"></i></span>&nbsp;Avançar</button></a>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="row">
+                    <td class="col"><strong>Status:</strong> {{object.order_status}}</td>
+                    <td class="col text-right"><strong>Total:</strong> {{object.final_value}}</td>
+                </tr>
+                <tr class="row" id="location">
+                    <td><strong>Localização:</strong> {{object.address}}</td>
+                </tr>
+            </table>
+        </div>
+    {% endfor %}
+
+    <style>
+        #order-banner{
+            background-color: #161719;
+            color: #FFFFFF;
+            border-left: #FF7A00 5px solid;
+        }
+
+        #order-banner table td{
+            border: none;
+        }
+
+        #location{
+            background-color: #212121;
+        }
+        #nav{
+            height: auto !important;
+        }
+    </style>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

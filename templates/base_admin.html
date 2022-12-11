@@ -4,8 +4,8 @@
 {% block body %}
 
     <header id="admin-navbar">
-        <button class="btn ml-5 font-weight-bold" style="background-color:rgba(0, 0, 0, 0.5);">CONFIGURAÇÕES</button>
-        <button class="btn font-weight-bold">PEDIDOS</button>
+        <a href="{% url 'pizza_list' %}"><button class="btn ml-5 font-weight-bold" style="background-color:rgba(0, 0, 0, 0.5);">CONFIGURAÇÕES</button></a>
+        <a href="{% url 'order_list' %}"><button class="btn font-weight-bold">PEDIDOS</button></a>
     </header>
     
     <div class="d-flex justify-content-start">
@@ -26,7 +26,7 @@
             </div>
         </div>
         <div id="content" class="justify-content-end w-100 m-5 p-2">
-            {{ breadcrumbs }}
+            <span id="breadcrumbs">{{ breadcrumbs }}</span>
            {% block content %}{% endblock %}
         </div>
     </div>
@@ -55,7 +55,7 @@ body{
     color: #FFFFFF;
     background-color: #161719;
     padding: 2% 2%;
-    height: calc(100vh - 4em);
+    height: 100vh
 }
 
 #nav ul{
@@ -142,6 +142,11 @@ body{
 #return-block span{
     color:#FFFFFF;
     cursor: pointer;
+}
+
+#breadcrumbs{
+    color: #FFFFFF;
+    font-style: italic;
 }
 
 </style>

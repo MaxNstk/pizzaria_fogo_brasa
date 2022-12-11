@@ -2,12 +2,11 @@
 
 {% block content %}
     <div class="d-flex justify-content-center mt-5">
-        <div id="home-content" class="w-100 text-center rounded py-5">
+        <div id="home-content" class="w-100 text-center rounded p-5">
             <h1>A vida é melhor com pizza!!!</h1><br>
             <h4>A pizza mais saborosa da região</h4>
-            <div class="d-flex justify-content-center">
-               <a href="{% url 'order_create' %}"> <button class="btn-delivery btn mx-5 py-2 px-5"><i class="fa-solid fa-truck-fast"></i>&nbsp;Entrega</button></a>
-                <button class="btn-delivery btn mx-5 py-2 px-5"><i class="fa-solid fa-house-chimney-user"></i>&nbsp;Retirada</button>
+            <div class="d-flex justify-content-center w-100">
+               <a href="{% url 'order_create' %}"> <button class="btn-delivery btn mx-5 py-2 px-5"><i class="fa-solid fa-truck-fast"></i>&nbsp;Realizar Pedido</button></a>
             </div>
         </div>
     </div>

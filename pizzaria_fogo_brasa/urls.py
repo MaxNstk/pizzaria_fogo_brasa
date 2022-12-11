@@ -20,6 +20,7 @@ from core.views.product.product_list_view import ProductListView
 from core.views.product.product_create_view import ProductCreateView
 from core.views.product.product_update_view import ProductUpdateView
 from core.views.customer.customer_list_view import CustomerListView
+from core.views.order.order_list_view import OrderListView
 
 router = CustomRouter()
 urlpatterns = [ 
@@ -63,5 +64,6 @@ urlpatterns = [
     path('pizza_update/<int:pk>', login_required(PizzaUpdateView.as_view()), name='pizza_update'),
     
     path('order_create', login_required(OrderCreateView.as_view()), name='order_create'),
+    path('order_list', login_required(OrderListView.as_view()), name='order_list'),
 
 ]

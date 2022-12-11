@@ -1,12 +1,16 @@
 {% extends "base_customer.html" %}
 {% load widget_tweaks crispy_forms_tags i18n static %}
 {% block content %}
-    <div id="generic-form" class="p-4 rounded">
+
+    <div id="generic-form" class="px-5 rounded w-75 my-4">
+        <h1 class="text-center mt-4">Monte seu Pedido!</h1><br>
         {% crispy form %}
     </div>
 
     <style>
-
+        #generic-form{
+            background-color: #FFFFFF;
+        }
         #btn-create-order{
             background-color: #70A401;
             color: #FFFFFF;

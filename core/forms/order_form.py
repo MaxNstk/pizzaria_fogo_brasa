@@ -26,4 +26,4 @@ class OrderForm(FormHandlerMixin, ModelForm):
              Div(
                  Div(Submit('', 'CONCLUIR PEDIDO', css_class='btn btn-primary w-100 mt-5 button-form',css_id="btn-create-order"), css_class='col-lg-12'),
                  css_class='row justify-content-between mb-5')
-         )
+        )

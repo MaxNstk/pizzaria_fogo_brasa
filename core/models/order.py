@@ -20,17 +20,17 @@ class Order(models.Model):
     FACE_TO_FACE = 2
 
     situation_choices = (
-        ('Cancelado',CANCELED),
-        ('Pendente de confirmação',PENDING_CONFIRMATION),
-        ('Confirmado',CONFIRMED),
-        ('Em produção',IN_PRODUCTION),
-        ('Pronto para retirada/entrega',READY),
-        ('Finalizado',FINISHED)
+        (CANCELED, 'Cancelado'),
+        (PENDING_CONFIRMATION, 'Pendente de confirmação'),
+        (CONFIRMED, 'Confirmado'),
+        (IN_PRODUCTION, 'Em produção'),
+        (READY, 'Pronto para retirada/entrega'),
+        (FINISHED, 'Finalizado')
     )
 
     delivery_choices = (
-        ('Entrega', DELIVERY),
-        ('Presencial', FACE_TO_FACE)
+        (DELIVERY, 'Entrega'),
+        (FACE_TO_FACE, 'Presencial')
     )
 
     final_value = models.FloatField(null=True, verbose_name='Valor Final', blank=True)

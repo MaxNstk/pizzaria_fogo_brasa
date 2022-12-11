@@ -8,6 +8,12 @@ class OrderListView(GenericListView):
     template_name = 'order_list.html'
     
     def get_queryset(self):
+        a = Order.objects.all()
+        for p in a:
+            pizza_list = []
+            for pizza in p.pizzas.all():
+                pizza_list.append(f'{pizza.flavor.name} - {pizza.size.short_name}')
+            p.__setattr__('pizza_list', pizza_list)
         return Order.objects.all()
 
     def set_table_headers(self):

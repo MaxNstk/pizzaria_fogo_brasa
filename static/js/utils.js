@@ -11,4 +11,3 @@ async function handleObjectActivation(objectId, IsActive, path){
         return
     }
 }
-

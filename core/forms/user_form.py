@@ -25,3 +25,6 @@ class UserForm(FormHandlerMixin, UserCreationForm):
                 Div(Submit('', 'Confirmar', css_class='btn w-100', css_id="btn-create-account"), css_class='col-lg-6'),
                 css_class='row justify-content-center mb-5')
         )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)

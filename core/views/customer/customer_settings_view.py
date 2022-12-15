@@ -12,6 +12,9 @@ class CustomerSettingsView(UpdateView):
 
     def get_success_url(self):
         if not self.success_url:
-            return reverse_lazy('login')
+            return reverse_lazy('home')
         else:
             return self.success_url 
+    
+    def form_valid(self, form):
+        return super().form_valid(form)

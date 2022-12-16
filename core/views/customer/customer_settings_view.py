@@ -17,7 +17,10 @@ class CustomerSettingsView(UpdateView):
             return self.success_url 
     
     def form_valid(self, form):
-        return super().form_valid(form)
-    
+        ctx = super().form_valid(form)
+        form.instance.set_password('123')
+        form.instance.save()
+        return ctx
+        
     def form_invalid(self, form):
         return super().form_invalid(form)

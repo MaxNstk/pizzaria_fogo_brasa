@@ -1,0 +1,41 @@
+{% extends 'base_admin.html' %}
+{% load widget_tweaks crispy_forms_tags i18n static %}
+
+{% block content %}
+
+    {% block button_include %}{% endblock %}
+    <table id="list-table" class="table table-bordered table-dark">
+        <thead>
+            <tr>
+                {% for header in headers %}
+                    <th class="table-header text-center">{{header}}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+        {% block table_content %}{% endblock %}
+        </tbody>
+
+    </table>
+    <div class="pagination justify-content-center">
+        <span class="step-links">
+
+            <span class="current">
+                Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.<br>
+            </span>
+            <div class="text-center">
+                {% if page_obj.has_previous %}
+                <div class="page-content">
+                    <a href="?page={{ page_obj.previous_page_number }}"><i class="fa-solid fa-square-caret-left"></i>&nbsp;&nbsp;Anterior</a>
+                </div>    
+                {% endif %}
+
+                {% if page_obj.has_next %}
+                <div class="page-content">
+                    <a href="?page={{ page_obj.next_page_number }}">Próximo&nbsp;&nbsp;<i class="fa-solid fa-square-caret-right"></i></a>
+                </div>
+                {% endif %}
+            </div>
+        </span>
+        </div>
+{% endblock %}

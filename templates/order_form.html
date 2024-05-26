@@ -1,0 +1,35 @@
+{% extends "base_customer.html" %}
+{% load widget_tweaks crispy_forms_tags i18n static %}
+{% block content %}
+
+    <div id="generic-form" class="px-5 rounded w-50 my-4">
+        <h1 class="text-center mt-4">Monte seu Pedido!</h1><br>
+        <div class="d-flex justify-content-center">
+            {% crispy form %}  
+        </div>
+    </div>
+
+    <style>
+        #generic-form{
+            background-color: #FFFFFF;
+        }
+        #btn-create-order{
+            background-color: #70A401;
+            color: #FFFFFF;
+            border: none;
+        }
+        #btn-create-order:hover{
+            background-color: #567e00;
+            transition-duration: 1s;
+        }
+    </style>
+{% endblock %}
+
+{% block scripts %}
+    <script defer>
+        $(document).ready(function() {
+        $('#id_pizzas').select2();
+        $('#id_products').select2();
+    }); 
+    </script>
+{% endblock %}

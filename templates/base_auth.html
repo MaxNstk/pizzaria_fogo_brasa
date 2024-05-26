@@ -1,0 +1,104 @@
+S{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block body %}
+    <div id="content">
+        <div id="banner" class="d-flex flex-row bd-highlight mb-3 justify-content-center">
+            <div id="banner-image">
+                <div id="banner-left-content">
+                    {% block banner_left_content %} {% endblock %}
+                </div>
+            </div>
+            <div id="banner-right-content">
+                <img class="mt-5" src="{% static 'img/logo.png' %}" alt="Logo Pizzaria Fogo na Brasa" width="450px"><br>
+                <div id="content-main" class="text-center mt-5">
+                    {% block banner_right_content %} {% endblock %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block styles %}
+
+<style>
+    body{
+        background-color: #410000;
+        font-family: 'Kadwa';
+    }
+
+    #content{
+        display: block;
+        margin-top: 0em;
+        margin-block-end: 1em;
+        height: 100%;
+    }
+
+    #banner{
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        position: fixed;
+    }
+
+    #banner-right-content{
+        background-color: #620000;
+        text-align: center;
+        width: 700px;
+        height: 700px;
+    }
+
+    #banner-right-content input{
+        height: 3em;
+        width: 30em;
+        border: 0.025em solid gray;
+        border-radius: 0.25em;
+    }
+
+    #banner-right-content button{
+        width: 10em;
+        height: 3em;
+        background-color: #410000;
+        color: #FFFFFF;
+        border: none;
+        cursor: pointer;
+        border-radius: 2px;
+        box-shadow: 2px 2px 5px #000000;
+        font-weight: 700;
+    }
+
+    #banner-image{
+        width: 700px;
+        height: 700px;
+        background-image: url("{% static 'img/pizza_banner.jpg' %}");
+        background-size: cover;
+        box-shadow: 0px 0px 10px #000000;
+        text-align: center;
+    }
+
+    #banner-left-content{
+        padding-top: 300px;
+    }
+
+    #banner-left-content h1, p{
+        color: #FFFFFF;
+        margin: 0.350em;
+    }
+
+    #banner-left-content button{
+        cursor: pointer;
+        width: 12em;
+        height: 2.5em;
+        margin: 0.625em;
+        background-color: #FFFFFF;
+        color: #410000;
+        border: none;
+        border-radius: 2px;
+        box-shadow: 2px 2px 5px #000000;
+        font-weight: 700;    
+    }
+
+</style>
+
+{% endblock %}

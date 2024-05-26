@@ -1,0 +1,29 @@
+{% extends 'generic_list.html' %}
+{% load widget_tweaks crispy_forms_tags i18n static %}
+
+{% block button_include %}
+    <div id="button-group" class="text-right my-4">
+        <a href=""><button class="btn px-4 py-2"><span style="color: #FF0000;"><i class="fa-solid fa-user-slash p-1"></i></span>&nbsp;Bloqueados</button></a>
+    </div>
+{% endblock %}
+
+{% block table_content %}
+
+    {% for object in page_obj %}
+        <tr>
+            <td>{{object.first_name}}</td>
+            <td>{{object.cpf_cnpj}}</td>
+            <td>{{object.email}}</td>
+            {% if object.is_active %}
+                <td class="text-center"><a onclick="blockUser({{object.id}},{{object.is_active|lower}})"><span style="color: #FF0000; background-color: #FFFFFF; border-radius: 3px; cursor: pointer;"><i class="fa-sharp fa-solid fa-ban m-1"></i></span></a></td>
+            {% else %}
+                <td class="text-center"><a onclick="blockUser({{object.id}},{{object.is_active|lower}})"><span style="color: #70A401; background-color: #FFFFFF; border-radius: 3px; cursor: pointer;"><i class="fa-solid fa-square-check m-1"></i></span></a></td>    
+            {% endif %} 
+        </tr>
+    {% endfor %}
+
+{% endblock %}
+
+{% block scripts %} 
+    <script src="{% static 'js/block_user.js' %}"></script>
+{% endblock %}

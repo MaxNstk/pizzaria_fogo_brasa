@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% load widget_tweaks crispy_forms_tags i18n static %}
+
+{% block body %}
+
+    <header id="admin-navbar" class="py-4"></header>
+    
+    <div class="d-flex justify-content-start">
+        <div id="nav">
+            <div class="text-center mb-4">
+                <img src="{% static 'img/logo.png' %}" width="200px">
+            </div>
+            <p class="border-bottom text-center mb-5 p-1 font-weight-bold">CADASTROS</p>
+            <ul class="list-group">
+                <a href="{% url 'pizza_list' %}"><i class="fa-sharp fa-solid fa-pizza-slice p-2 m-1"></i>&nbsp;&nbsp;Pizzas</a>
+                <a href="{% url 'flavor_list' %}"><i class="fa-solid fa-bacon p-2 m-1"></i>&nbsp;&nbsp;Sabores</a>
+                <a href="{% url 'size_list' %}"><i class="fa-solid fa-ruler p-2 m-1"></i>&nbsp;&nbsp;Tamanhos</a>
+                <a href="{% url 'product_list' %}"><i class="fa-solid fa-wine-glass p-2 m-1"></i>&nbsp;&nbsp;Produtos</a>
+                <a href="{% url 'customer_list' %}"><i class="fa-solid fa-user p-2 m-1"></i>&nbsp;&nbsp;Clientes</a>
+            </ul>
+            <p class="border-bottom text-center mb-5 p-1 font-weight-bold mt-5">PEDIDOS</p>
+            <ul class="list-group">
+                <a href="{% url 'order_list' %}"><i class="fa-sharp fa-solid fa-clock p-2 m-1"></i>&nbsp;&nbsp;Pendentes</a>
+            </ul>
+            <div id="nav-footer" class="mt-5">
+                <a href="{% url 'logout' %}"><i class="fa-solid fa-arrow-right-from-bracket"></i>&nbsp;Sair</a> 
+            </div>
+        </div>
+        <div id="content" class="justify-content-end w-100 m-5 p-2">
+            <span id="breadcrumbs">{{ breadcrumbs }}</span>
+           {% block content %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block styles %} 
+
+<style>
+
+body{
+    background-color: #1E2127;
+}
+
+#admin-navbar{
+    background: linear-gradient(90deg, rgba(0,0,0,1) -8%, rgba(80,2,2,1) 30%, rgba(65,0,0,1) 100%);
+    width: 100%;
+}
+
+#nav{
+    color: #FFFFFF;
+    background-color: #161719;
+    padding: 2% 2%;
+    height: 100vh
+}
+
+#nav ul{
+    list-style: none;
+}
+
+#nav a:hover{
+    background-color: #292A2D;
+    transition-duration:1s;
+}
+
+#nav a, #nav-footer a{
+    cursor: pointer;
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+#content{
+    overflow-y: auto;
+}
+
+.table-header{
+    background-color: #BABABA;
+    color: #000000;
+}
+
+#list-table{
+    box-shadow: 2px 2px 5px #000000;
+}
+
+#list-table tr{
+    background-color: #161719;
+    color: #FFFFFF;
+}
+
+#list-table tr:nth-child(even) {
+  background: #292A2D;
+}
+
+.button-form{
+    background-color: #161719;
+    color: #FFFFFF;
+    box-shadow: 2px 2px 5px #000000;
+    border: none;
+}
+
+.list-group a{
+    width: 100%;
+}
+
+.button-form:hover{
+    background-color: #410000;
+}
+
+#generic-form{
+    background-color: #292A2D;
+    color: #FFFFFF;
+    box-shadow: 2px 2px 5px #000000;
+}
+
+.step-links{
+    color: #FFFFFF;
+}
+
+.step-links a{
+    text-decoration: none;
+    color: #FFFFFF;
+    background-color: #410000;
+    border-radius: 5px;
+    padding: 0.25em 1em;
+    box-shadow: 2px 2px 5px #000000;
+}
+
+.page-content{
+    margin-top: 1em;
+}
+
+#button-group button{
+    background-color: #161719;
+    color: #FFFFFF;
+    box-shadow: 2px 2px 5px #000000;
+}
+
+#return-block span{
+    color:#FFFFFF;
+    cursor: pointer;
+}
+
+#breadcrumbs{
+    color: #FFFFFF;
+    font-style: italic;
+}
+
+</style>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'generic_list.html' %}
+{% load widget_tweaks crispy_forms_tags i18n static %}
+
+{% block button_include %}
+    <div id="button-group" class="text-right my-4">
+        <a href="{% url 'product_create' %}"><button class="btn px-4 py-2"><span style="color: #70A401;"><i class="fa-solid fa-square-plus p-1"></i></span>&nbsp;Incluir</button></a>
+    </div>
+{% endblock %}
+
+{% block table_content %}
+    {% for object in page_obj  %}
+        <tr>
+            <td>{{object.description}}</td>
+            <td>{{object.price}}</td>
+            <td>{{object.is_active|yesno:"Sim, Não" }}</td>
+            <td class="text-center"><a href="{% url 'product_update' object.pk %}"><span style="color: #FF7A00; background-color: #FFFFFF; border-radius: 3px;"><i class="fa-solid fa-pen m-1"></i></span></a>
+                {% if object.is_active %}
+                <a onclick="handleProductActivation({{object.id}},{{object.is_active|lower}})"><span style="color: #70A401; background-color: #FFFFFF; border-radius: 3px;"><i class="fa-sharp fa-solid fa-check m-1"></i></span></td>
+                {% else %}
+                    <a onclick="handleProductActivation({{object.id}},{{object.is_active|lower}})"><span style="color: #D70000; background-color: #FFFFFF; border-radius: 3px;"><i class="fa-sharp fa-solid fa-empty-set m-1"></i></span></td>
+                {% endif %} 
+            </td>
+        </tr>
+    {% endfor %}
+
+{% endblock %}
+
+{% block scripts %}
+
+<script> 
+    function handleProductActivation(id, status){ 
+        return handleObjectActivation(id, status, PRODUCT_PATH)
+    } 
+</script>
+{% endblock %}

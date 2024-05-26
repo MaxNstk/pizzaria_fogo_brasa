@@ -1,0 +1,101 @@
+{% extends 'base_admin.html' %}
+{% load widget_tweaks crispy_forms_tags i18n static %}
+
+{% block content %}
+    {% for object in object_list %}
+        <div id="order-banner" class="rounded mt-5 px-3">
+            <table class="table">
+                <tr class="row">
+                    <td class="col"><strong>Pedido:</strong> #{{object.id}} | Cliente: {{object.customer}}</td>
+                    <td class="col text-right"><strong>Tipo:</strong> {{ object.get_order_type_display }}</td>
+                </tr>
+                <tr class="row">
+                    <td class="col">
+                    Pizzas:
+                    {% for pizza in object.pizzas.all %}
+                        {{pizza.flavor.name}} - {{pizza.size.short_name}} |
+                    {% endfor %}
+                    </td>
+                </tr>
+                <tr class="row">
+                    <td class="col">
+                        Produtos:
+                        {% for product in object.products.all %}
+                            {{ product.description }},
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr class="row">
+                    {% if object.observation %}
+                    <td class="col"><strong>Observações:</strong><br> 
+                        {{object.observation}} 
+                    </td>
+                    {% endif %}
+                    <td class="col">
+                        <div id="button-group" class="text-right">
+                            <a onclick="CancelOrder({{object.id}})"><button class="btn m-2"><span style="color: #FF0000;"><i class="fa-solid fa-circle-xmark p-1"></i></span>&nbsp;Cancelar</button></a><br>
+                            <a onclick="GoToNextOrderStep({{object.id}},{{object.order_status}})"><button class="btn m-2"><span style="color: #567e00;"><i class="fa-solid fa-play p-1"></i></span>&nbsp;Avançar</button></a>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="row">
+                    <td class="col"><strong>Status:</strong> {{ object.get_order_status_display }}</td>
+                    <td class="col text-right"><strong>Total:</strong> {{object.final_value }}</td>
+                </tr>
+            </table>
+        </div>
+    {% endfor %}
+
+    <style>
+        #order-banner{
+            background-color: #292A2D;
+            color: #FFFFFF;
+            border-left: #FF7A00 5px solid;
+        }
+
+        #order-banner table td{
+            border: none;
+        }
+
+        #location{
+            background-color: #212121;
+        }
+        #nav{
+            height: auto !important;
+        }
+    </style>
+{% endblock %}
+
+{% block scripts %}
+    {{block.super}}
+    <script>
+        async function GoToNextOrderStep(objectId, status){
+    const response =  await axios({
+        headers: {"X-CSRFToken": CONTEXT.CSRF_TOKEN,},
+        url : `${ORDER_PATH}${objectId}/`,
+        method : 'patch',    
+        datatype: 'json',
+        data: {'order_status': status+1},
+        })
+    if (response.status == 200){
+        window.location.reload()
+        return
+    }
+    }
+
+    async function CancelOrder(objectId){
+    const response =  await axios({
+        headers: {"X-CSRFToken": CONTEXT.CSRF_TOKEN,},
+        url : `${ORDER_PATH}${objectId}/`,
+        method : 'patch',    
+        datatype: 'json',
+        data: {'order_status': 0},
+        })
+    if (response.status == 200){
+        window.location.reload()
+        return
+    }
+}
+    </script>
+
+{% endblock %}

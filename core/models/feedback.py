@@ -17,7 +17,7 @@ class FeedBack(models.Model):
         ('Ruim',BAD),
         ('Muito Ruim',VERY_BAD),
         ('Horrível',AWFUL)
-        )
+    )
 
     rating = models.IntegerField(choices=rating_choices, verbose_name='Classificação')
     description = models.CharField(max_length=255, null=True, blank=True, verbose_name='Descrição')

@@ -13,7 +13,18 @@
                 "runserver"
             ],
             "django": true,
-            "justMyCode": true
+            "justMyCode": false
+        },
+        {
+            "name": "comando",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}\\manage.py",
+            "args": [
+                "create_initial_data"
+            ],
+            "django": true,
+            "justMyCode": false
         }
     ]
 }
